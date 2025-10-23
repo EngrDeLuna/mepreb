@@ -303,6 +303,10 @@
     display: none;
   }
 
+    .hero {
+    padding-top: 80px; /* adjust to your navbar height */
+  }
+  
   .hero h1 {
     font-size: 2rem;
     line-height: 1.3;
