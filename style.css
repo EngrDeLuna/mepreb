@@ -305,7 +305,7 @@
 
      .hero {
     padding-top: 90px; /* for navbar spacing */
-    padding-bottom: 60px; /* adds space at bottom on mobile */
+    padding-bottom: 90px; /* adds space at bottom on mobile */
   }
 
   .hero h1 {
