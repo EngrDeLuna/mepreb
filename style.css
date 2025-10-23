@@ -303,8 +303,9 @@
     display: none;
   }
 
-    .hero {
-    padding-top: 90px; /* adjust to your navbar height */
+     .hero {
+    padding-top: 90px; /* for navbar spacing */
+    padding-bottom: 60px; /* adds space at bottom on mobile */
   }
 
   .hero h1 {
