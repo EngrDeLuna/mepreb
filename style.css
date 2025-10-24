@@ -932,13 +932,6 @@
   border-radius: 4px;
 }
 
-/* === Adjusted button spacing for single-button layout === */
-.hero-buttons {
-  justify-content: center;
-  margin-top: 30px;
-}
-
-
 
 
 
@@ -1423,4 +1416,410 @@
     margin-bottom: 8px;
   }
 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================== */
+/* PORTFOLIO PAGE HERO SECTION */
+/* ============================== */
+.portfolio-hero-section {
+  background-color: #f4f6fc;
+  padding: 120px 8%;
+  text-align: left;
+  margin-top: 20px;
+}
+
+/* GRID LAYOUT */
+.portfolio-hero-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* TEXT AREA */
+.portfolio-hero-text h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #000;
+  text-align: center;
+}
+
+.portfolio-hero-line {
+  width: 600px;
+  height: 2px;
+  background-color: #d4af37;
+  border: none;
+  margin-bottom: 25px;
+}
+
+.portfolio-hero-text p {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  text-align: justify;
+  color: #000;
+  margin-bottom: 25px;
+}
+
+/* IMAGE AREA */
+.portfolio-hero-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  object-fit: cover;
+}
+
+
+
+.btn-yellow .arrow {
+  display: inline-block;
+  transform: rotate(90deg);
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.btn-yellow:hover .arrow {
+  transform: rotate(90deg) translateY(4px);
+}
+
+/* ============================== */
+/* RESPONSIVE FOR MOBILE VIEW */
+/* ============================== */
+@media (max-width: 900px) {
+  .portfolio-hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .portfolio-hero-text h1 {
+    text-align: center;
+    font-size: 2rem;
+    line-height: 1.3;
+  }
+
+  .portfolio-hero-line {
+    width: 60%;
+    margin: 0 auto 25px auto;
+  }
+
+  .portfolio-hero-text p {
+    text-align: center;
+  }
+
+  .portfolio-hero-image {
+    margin-top: 40px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* ============================== */
+  /* PROJECT HIGHLIGHTS SECTION */
+  /* ============================== */
+
+  .project-highlights {
+    padding: 80px 8%;
+    background-color: #ffffff;
+  }
+
+  .project-highlights .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .project-highlights .section-header h2 {
+    background-color: #dedede;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #000080;
+    font-size: 2rem;
+    font-weight: 700;
+    border-radius: 20px;
+  }
+
+  .project-highlights .section-header p {
+    font-size: 1.5rem;
+    color: black;
+    margin-top: 10px;
+  }
+
+  /* ============================== */
+  /* GRID STRUCTURE */
+  /* ============================== */
+  .highlight-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 40px;
+    margin-bottom: 80px;
+  }
+
+  /* REVERSE LAYOUT */
+  .highlight-item.reverse {
+    grid-template-columns: 1fr 1fr;
+    align-items: start; 
+  }
+
+  .highlight-item.reverse .highlight-image {
+    order: 2;
+  }
+
+  .highlight-item.reverse .highlight-info {
+    order: 1;
+    text-align: right;
+    display: block;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  /* ============================== */
+  /* IMAGE + THUMBNAILS */
+  /* ============================== */
+  .highlight-image {
+    display: flex;
+    flex-direction: column;
+    
+  }
+
+  /* ✅ Image positioning */
+  .highlight-item:not(.reverse) .highlight-image {
+    align-items: flex-end; /* move right when on the left */
+  }
+
+  .highlight-item.reverse .highlight-image {
+    align-items: flex-start; /* move left when on the right */
+  }
+
+.highlight-image img {
+  width: 100%;
+  max-width: 480px;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25); /* stronger shadow on hover */
+  /* fade effect */
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0.7;
+}
+
+
+
+  /* THUMBNAILS BELOW MAIN IMAGE */
+  .thumbnail-gallery {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: nowrap;
+    max-width: 480px;
+  }
+
+  /* ✅ Align thumbnails same direction as image */
+  .highlight-item:not(.reverse) .thumbnail-gallery {
+    justify-content: flex-end; /* right-aligned */
+  }
+
+  .highlight-item.reverse .thumbnail-gallery {
+    justify-content: flex-start; /* left-aligned */
+  }
+
+  .thumbnail-gallery .thumb {
+    width: 18%;
+    height: 60px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .thumbnail-gallery .thumb:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+
+  .thumb.active-thumb {
+    outline: 2px solid #000080;
+    opacity: 0.9;
+  }
+  /* ============================== */
+  /* INFO BOX */
+  /* ============================== */
+  /* Base highlight-info */
+.highlight-info {
+  background-color: #f4f6fc;
+  padding: 20px 25px;
+  border-radius: 10px;
+  width: 100%;      /* fills its grid column */
+  max-width: 550px; /* optional: limit width so it doesn't stretch too much */
+  min-height: 350px;
+  margin: 0;        /* remove auto centering */
+}
+
+/* Normal layout: image left, info right */
+.highlight-item:not(.reverse) .highlight-info {
+  margin-left: 0;   /* stick to left of its column */
+  margin-right: auto;
+}
+
+/* Reverse layout: image right, info left */
+.highlight-item.reverse .highlight-info {
+  margin-left: auto; /* stick to right of its column */
+  margin-right: 0;
+  text-align: right; /* optional: align text to right for consistency */
+}
+
+  .highlight-info h3 {
+    color: #000080;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .highlight-info hr {
+    border: none;
+    border-top: 2px solid #000080;
+    margin: 10px 0;
+  }
+
+  .highlight-info .location {
+    color: #000080;
+    font-style: italic;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .highlight-details p {
+    color: #000;
+    margin-bottom: 5px;
+  }
+
+  .project-btn {
+  background-color: #d4af37; /* gold/yellow */
+  color: white;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.7rem;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  margin: 15px auto 0; /* top margin + horizontal auto to center */
+  border: none;
+  cursor: pointer;
+}
+
+.project-btn:hover {
+  background-color: #b8962f; /* darker gold */
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 900px) {
+  .highlight-item {
+    display: flex;
+    flex-direction: column; /* stack vertically */
+    overflow-x: hidden;      /* prevent horizontal scroll of main container */
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  /* Image area first */
+  .highlight-image {
+    order: 1;          
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .highlight-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  /* Make thumbnails scrollable for all highlight-items */
+  .highlight-item .thumbnail-gallery {
+    display: flex;
+    gap: 10px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px 0 5px;
+    justify-content: flex-start;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .highlight-item .thumbnail-gallery::-webkit-scrollbar {
+    display: none; /* hide scrollbar */
+  }
+
+  .highlight-item .thumbnail-gallery .thumb {
+    flex: 0 0 auto;
+    width: 40%;
+    height: 55px;
+    border-radius: 8px;
+    object-fit: cover;
+    cursor: pointer;
+    scroll-snap-align: start;
+    transition: transform 0.3s ease, opacity 0.3s ease, border 0.3s ease;
+  }
+
+  .highlight-item .thumbnail-gallery .thumb.active {
+    border: 2px solid #001c80;
+  }
+
+  /* Description area below image */
+  .highlight-info {
+    order: 2;          
+    width: 100%;
+    max-width: 100%;
+    text-align: left;  
+    margin: 0;
+  }
+
+  /* Override reverse layout for mobile stacking */
+  .highlight-item.reverse .highlight-info {
+    text-align: left;
+    order: 2;
+  }
 }
