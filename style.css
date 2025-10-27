@@ -1,3 +1,4 @@
+
 /* RESET */
 * {
   margin: 0;
@@ -94,7 +95,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.7);
   z-index: 0;
 }
 
@@ -320,6 +321,9 @@
   .hero p {
     font-size: 1rem;
   }
+  .hero .hero-content p{
+    font-size: 1rem;
+  }
 
   /* Center hero buttons vertically and horizontally */
   .hero-buttons {
@@ -328,12 +332,18 @@
     align-items: center;
     justify-content: center;
     margin-top: 30px;
-  }
+  } 
 
   .btn-primary {
     width: 80%;
-    max-width: 320px;
+    max-width: 200px;
     text-align: center;
+  }
+  .btn-yellow{
+    width: 80%;
+    max-width: 250px;
+    text-align: center;
+    font-size: 13px;
   }
 }
 
@@ -511,14 +521,32 @@
 
 
 
-
-
-
 /* FEATURED PROJECTS SECTION */
 .featured-projects {
-  background-color: #e8e8e8;
+  position: relative; /* Needed for overlay positioning */
   text-align: center;
   padding: 80px 8%;
+  background: url("images/home-featured-project.png") no-repeat center center;
+  background-attachment: fixed; /* Parallax effect */
+  background-size: cover;
+  min-height: 100vh; /* Full screen height */
+  color: #000; /* Adjust text color if needed */
+  overflow: hidden;
+}
+
+/* Overlay layer for soft visibility effect */
+.featured-projects::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6); /* Light overlay — adjust opacity */
+  z-index: 0;
+}
+
+/* Make sure content stays above the overlay */
+.featured-projects * {
+  position: relative;
+  z-index: 1;
 }
 
 .featured-projects h2 {
@@ -710,21 +738,42 @@
   
 }
 
-
-
-
-
 /* CTA SECTION */
 .cta-section {
-  background-color: #277bc0; /* light blue background */
+  position: relative; /* needed for overlay */
+  background-image: url('images/ready.png'); /* background image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   text-align: center;
   padding: 30px 8%;
+  color: #ffffff; /* ensures text is readable on image */
+  overflow: hidden; /* ensures overlay stays inside */
+}
+
+/* Transparent overlay */
+.cta-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* black overlay with 40% opacity */
+  z-index: 0; /* behind content */
+}
+
+/* Make sure text is above overlay */
+.cta-section h2,
+.cta-buttons {
+  position: relative;
+  z-index: 1;
 }
 
 .cta-section h2 {
-  color: #001c80; /* blue color */
-  font-size: 3rem; /* bigger size */
-  font-weight: 800; /* bold */
+  color: #ffffff; /* adjust if needed */
+  font-size: 3rem;
+  font-weight: 800;
   margin-bottom: 40px;
 }
 
@@ -732,16 +781,16 @@
 .cta-buttons {
   display: flex;
   justify-content: center;
-  gap: 30px; /* space between buttons */
-  flex-wrap: wrap; /* ensures buttons stack on smaller screens */
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
 .cta-buttons a {
   display: inline-block;
-  background-color: #001c80; /* blue background */
-  color: #ffffff; /* white text */
+  background-color: #001c80;
+  color: #ffffff;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.9rem;
   border-radius: 25px;
   padding: 12px 30px;
   text-decoration: none;
@@ -752,8 +801,6 @@
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
-
-
 
 
 
@@ -1425,36 +1472,60 @@
 
 
 
-
-
-
-
-
-
-
 /* ============================== */
-/* PORTFOLIO PAGE HERO SECTION */
+/* PORTFOLIO HERO SECTION */
 /* ============================== */
 .portfolio-hero-section {
-  background-color: #f4f6fc;
-  padding: 120px 8%;
-  text-align: left;
-  margin-top: 20px;
+  background: url("images/portfolio-bg.png") no-repeat center center / cover;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column; /* Stack grid and buttons vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  min-height: 100vh; /* Full height */
+  padding: 0 8%;
+  margin-top: 0;
+  box-sizing: border-box;
+}
+
+/* Overlay layer for soft contrast */
+.portfolio-hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.7); /* adjust 0.7 → 0.5 for darker overlay */
+  z-index: 0;
+}
+
+/* Keep content above overlay */
+.portfolio-hero-container,
+.portfolio-hero-section .hero-buttons {
+  position: relative;
+  z-index: 1;
 }
 
 /* GRID LAYOUT */
-.portfolio-hero-container {
+.portfolio-hero-section .portfolio-hero-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 60px;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1400px;
+  width: 100%;
+}
+
+/* HERO BUTTONS */
+.portfolio-hero-section .hero-buttons {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 40px;
 }
 
 /* TEXT AREA */
 .portfolio-hero-text h1 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   font-weight: 700;
   margin-bottom: 10px;
   color: #000;
@@ -1466,7 +1537,7 @@
   height: 2px;
   background-color: #d4af37;
   border: none;
-  margin-bottom: 25px;
+  margin: 0 auto 25px auto;
 }
 
 .portfolio-hero-text p {
@@ -1486,8 +1557,7 @@
   object-fit: cover;
 }
 
-
-
+/* BUTTON ARROW ANIMATION */
 .btn-yellow .arrow {
   display: inline-block;
   transform: rotate(90deg);
@@ -1500,16 +1570,22 @@
 }
 
 /* ============================== */
-/* RESPONSIVE FOR MOBILE VIEW */
+/* RESPONSIVE — 768px AND BELOW */
 /* ============================== */
-@media (max-width: 900px) {
-  .portfolio-hero-container {
+@media (max-width: 768px) {
+  .portfolio-hero-section {
+    padding: 60px 6%;
+    min-height: auto; /* prevents large empty space */
+     padding-top: 120px;
+  }
+
+  .portfolio-hero-section .portfolio-hero-container {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: 30px;
   }
 
   .portfolio-hero-text h1 {
-    text-align: center;
     font-size: 2rem;
     line-height: 1.3;
   }
@@ -1521,15 +1597,17 @@
 
   .portfolio-hero-text p {
     text-align: center;
+    font-size: 1.1rem;
   }
 
   .portfolio-hero-image {
-    margin-top: 40px;
+    margin-top: 20px;
+  }
+
+  .portfolio-hero-section .hero-buttons {
+    margin-top: 30px;
   }
 }
-
-
-
 
 
 
@@ -1823,3 +1901,213 @@
     order: 2;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+/* ===== OUR DEVELOPMENT JOURNEY SECTION ===== */
+.development-journey {
+  padding: 80px 8%;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #ffffff, #f8faff);
+}
+
+/* Section Header */
+.development-journey h2 {
+  background-color: #d9d9d9;
+  color: #000080;
+  display: inline-block;
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.development-journey .subtitle {
+  color: #555;
+  font-size: 1.2rem;
+  margin-bottom: 50px;
+  font-weight: 400;
+}
+
+/* Cards Container */
+.journey-cards {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Gradient Vertical Progress Line */
+.progress-line {
+  position: absolute;
+  top: 60px;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  background: linear-gradient(to bottom, #004aad, #e385ec);
+  box-shadow: 0 0 6px rgba(0,74,173,0.3);
+  border-radius: 10px;
+  z-index: 0;
+}
+
+/* Moving Dot */
+.moving-dot {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #000;
+  animation: moveDown 6s ease-in-out infinite, pulse 1.5s ease-in-out infinite;
+  z-index: 2;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Dot Animations */
+@keyframes moveDown {
+  0% { top: -10px; }
+  100% { top: calc(100% - 10px); }
+}
+@keyframes pulse {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.3); }
+}
+
+/* Journey Card */
+.journey-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #dedede;
+  border-radius: 20px;
+  padding: 30px;
+  gap: 30px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+  height: 170px;
+  position: relative;
+  z-index: 2;
+  border: 2px solid #e6e6e6;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.journey-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Circular Image */
+.journey-image img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Text Content */
+.journey-content {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Stage Title */
+.stage-title {
+  background-color: #f4f6fc;
+  color: #000080;
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+/* Stage Description */
+.stage-desc {
+  background-color: #f4f6fc;
+  border-radius: 12px;
+  padding: 12px 18px;
+  color: #333;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  width: 100%;
+}
+
+
+/* =============================== */
+/* RESPONSIVE DESIGN (≤ 768px) */
+/* =============================== */
+@media (max-width: 768px) {
+  .development-journey {
+    padding: 60px 6%;
+  }
+
+  .development-journey h2 {
+    font-size: 1.5rem;
+    padding: 8px 20px;
+  }
+
+  .development-journey .subtitle {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+
+  .journey-cards {
+    max-width: 90%;
+    gap: 40px;
+  }
+
+  .progress-line {
+    width: 3px;
+    top: 40px;
+    bottom: 40px;
+  }
+
+  .moving-dot {
+    width: 12px;
+    height: 12px;
+    top: -8px;
+  }
+
+  .journey-card {
+    padding: 20px;
+    height: 150px;
+    gap: 20px;
+    border-radius: 16px;
+  }
+
+  .journey-image img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .stage-title {
+    font-size: 0.9rem;
+    padding: 8px 14px;
+  }
+
+  .stage-desc {
+    font-size: 0.70rem;
+    padding: 10px 14px;
+  }
+}
+
