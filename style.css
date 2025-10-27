@@ -738,6 +738,8 @@
   
 }
 
+
+
 /* CTA SECTION */
 .cta-section {
   position: relative; /* needed for overlay */
@@ -800,6 +802,15 @@
 .cta-buttons a:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  .cta-section {
+    background-size: 150% auto; /* zoom more on mobile if needed */
+    background-position: center; /* show the top part of image */
+  }
 }
 
 
