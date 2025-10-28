@@ -68,3 +68,103 @@ document.addEventListener("DOMContentLoaded", function() {
     showImage(currentIndex);
   });
 });
+
+
+
+
+
+// ==============================
+// SEARCH / FILTER FUNCTIONALITY
+// ==============================
+const searchBar = document.getElementById("searchBar");
+const typeFilter = document.getElementById("typeFilter");
+const propertyCards = document.querySelectorAll(".property-card");
+
+function filterProperties() {
+  const searchText = searchBar.value.toLowerCase().trim();
+  const selectedType = typeFilter.value;
+
+  propertyCards.forEach(card => {
+    const location = card.getAttribute("data-location").toLowerCase();
+    const type = card.getAttribute("data-type");
+    const infoText = card.innerText.toLowerCase();
+
+    // Detect whether it's a full building or just a floor listing
+    const isBuilding = infoText.includes("total floors");
+    const isFloorOnly = infoText.includes("floors:") && !infoText.includes("total floors");
+
+    let matchesSearch = false;
+
+    // If user explicitly types "building" → show only buildings
+    if (searchText === "building" || searchText.includes("building")) {
+      matchesSearch = isBuilding;
+    }
+    // If user types "floor" → show only individual floor listings
+    else if (searchText === "floor" || searchText.includes("floor")) {
+      matchesSearch = isFloorOnly;
+    }
+    // Otherwise, normal text or location-based search
+    else {
+      matchesSearch =
+        location.includes(searchText) ||
+        infoText.includes(searchText);
+    }
+
+    // Match dropdown type filter
+    const matchesType =
+      selectedType === "" ||
+      (selectedType === "building" && isBuilding) ||
+      (selectedType === "floor" && isFloorOnly);
+
+    // Show or hide based on combined logic
+    card.style.display = (matchesSearch && matchesType) ? "block" : "none";
+  });
+}
+
+searchBar.addEventListener("input", filterProperties);
+typeFilter.addEventListener("change", filterProperties);
+// ==============================
+// MODAL SHOW / HIDE LOGIC
+// ==============================
+const modals = document.querySelectorAll(".modal");
+const viewButtons = document.querySelectorAll(".view-details");
+const closeButtons = document.querySelectorAll(".close");
+
+// Open Modal
+viewButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    const targetId = button.getAttribute("data-target");
+    const modal = document.getElementById(targetId);
+    if (modal) {
+      modal.style.display = "flex"; // show modal
+      document.body.style.overflow = "hidden"; // disable scrolling
+    }
+  });
+});
+
+// Close Modal
+closeButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const modal = btn.closest(".modal");
+    if (modal) {
+      modal.style.display = "none";
+      document.body.style.overflow = ""; // re-enable scrolling
+    }
+  });
+});
+
+// Close Modal when clicking outside
+window.addEventListener("click", e => {
+  modals.forEach(modal => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+      document.body.style.overflow = ""; // re-enable scrolling
+    }
+  });
+});
+
+
+
+
+
+
