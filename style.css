@@ -2436,6 +2436,10 @@
     font-size: 16px;
   }
 }
+
+
+
+
 /* ============================== */
 /* MODAL */
 /* ============================== */
@@ -2449,6 +2453,7 @@
   background: rgba(0,0,0,0.5); /* dark overlay */
   align-items: center;   /* center vertically */
   justify-content: center; /* center horizontally */
+    overflow-y: auto;
 }
 
 /* ============================== */
@@ -2465,6 +2470,9 @@
   box-shadow: 0 5px 20px rgba(0,0,0,0.3);
   animation: fadeIn 0.3s ease;
   margin: 0; /* ensures perfect centering */
+    max-height: 90vh; /* limit height to viewport */
+  overflow-y: auto; /* enable scrolling inside modal */
+
 }
 
 /* Close Button */
@@ -2509,5 +2517,15 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+@media (max-width: 768px) {
+  .modal {
+    align-items: flex-start; /* start from top */
+    padding-top: 90px;       /* adjust to avoid nav height */
+  }
+
+  .modal-content {
+    max-height: calc(90vh - 60px); /* subtract nav height */
   }
 }
