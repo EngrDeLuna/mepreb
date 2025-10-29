@@ -1,12 +1,12 @@
-// Hamburger Menu Toggle
-const menuToggle = document.getElementById('menu-toggle');
-const navMenu = document.getElementById('nav-menu');
+  // Hamburger Menu Toggle
+  const menuToggle = document.getElementById('menu-toggle');
+  const navMenu = document.getElementById('nav-menu');
 
-menuToggle.addEventListener('click', () => {
-  menuToggle.classList.toggle('active');
-  navMenu.classList.toggle('active');
-  document.body.classList.toggle('menu-open');
-});
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    navMenu.classList.toggle('active');
+    document.body.classList.toggle('menu-open');
+  });
 
 
 
@@ -123,6 +123,11 @@ function filterProperties() {
 
 searchBar.addEventListener("input", filterProperties);
 typeFilter.addEventListener("change", filterProperties);
+
+
+
+
+
 // ==============================
 // MODAL SHOW / HIDE LOGIC
 // ==============================
@@ -168,3 +173,64 @@ window.addEventListener("click", e => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.getElementById('consultationForm').addEventListener('submit', function(e){
+  e.preventDefault(); // prevent actual submission
+
+  // Validate at least one property type
+  const checkedProperties = document.querySelectorAll('input[name="propertyType"]:checked');
+  if(checkedProperties.length === 0){
+    alert('Please select at least one property type.');
+    return;
+  }
+
+  // Validate meeting type
+  const meetingType = document.getElementById('meetingType').value;
+  if(!meetingType){
+    alert('Please select a meeting type.');
+    return;
+  }
+
+  // Gather form data
+  const formData = {
+    fullName: this.fullName.value,
+    email: this.email.value,
+    phone: this.phone.value,
+    company: this.company.value,
+    transaction: this.transaction.value,
+    propertyType: Array.from(checkedProperties).map(el => el.value),
+    date: this.date.value,
+    time: this.time.value,
+    meetingType: meetingType,
+    comments: this.comments.value
+  };
+
+  console.log('Form Submitted:', formData);
+
+  // Display confirmation message (can replace with a modal)
+  alert(`Thank you ${formData.fullName}! Your consultation is scheduled on ${formData.date} at ${formData.time}.`);
+
+  // Optional: integrate with Google Calendar, send email, or redirect
+
+  this.reset();
+});

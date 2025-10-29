@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MREB Corp.</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- HEADER / NAVBAR -->
+<header class="navbar">
+  <div class="logo">
+    <img src="images/logo.png" alt="MREB Logo">
+  </div>
+
+  <!-- HAMBURGER ICON -->
+  <div class="menu-toggle" id="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- NAVIGATION MENU -->
+  <nav id="nav-menu">
+    <ul>
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="portfolio.html">PORTFOLIO</a></li>
+      <li><a href="properties.html">PROPERTIES</a></li>
+      <li><a href="propose-site.html">PROPOSE SITE</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+    </ul>
+  </nav>
+
+  <a href="#" class="btn-consult">BOOK A CONSULTATION</a>
+</header>
+
+
+
+
+
+
+
+<section id="book-consultation" class="consultation-section">
+  <div class="container">
+    <h2>BOOK A CONSULTATION</h2>
+    <p>Fill out the form below and our agent will contact you to schedule a consultation.</p>
+
+    <form id="consultationForm">
+      <!-- Personal Information -->
+      <div class="form-group">
+        <label for="fullName">Full Name*</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address*</label>
+        <input type="email" id="email" name="email" placeholder="Email Address" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number*</label>
+        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+      </div>
+
+      <div class="form-group">
+        <label for="company">Company (Optional)</label>
+        <input type="text" id="company" name="company" placeholder="Company Name">
+      </div>
+
+      <!-- Property Interest -->
+      <div class="form-group">
+        <label for="transaction">Transaction Type*</label>
+        <select id="transaction" name="transaction" required>
+          <option value="">Select Type</option>
+          <option value="buying">Buying</option>
+          <option value="selling">Selling</option>
+          <option value="leasing">Leasing</option>
+          <option value="investment">Investment</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Property Type*</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="propertyType" value="residential"> Residential</label>
+          <label><input type="checkbox" name="propertyType" value="commercial"> Commercial</label>
+          <label><input type="checkbox" name="propertyType" value="lot"> Lot</label>
+          <label><input type="checkbox" name="propertyType" value="condo"> Condo</label>
+        </div>
+      </div>
+
+      <!-- Preferred Schedule -->
+      <div class="form-group">
+        <label for="date">Preferred Date*</label>
+        <input type="date" id="date" name="date" required>
+      </div>
+
+      <div class="form-group">
+        <label for="time">Preferred Time*</label>
+        <input type="time" id="time" name="time" required>
+      </div>
+
+      <div class="form-group">
+        <label>Meeting Type*</label>
+        <select id="meetingType" name="meetingType" required>
+          <option value="">Select</option>
+          <option value="onsite">On-site Consultation</option>
+          <option value="virtual">Virtual Meeting</option>
+        </select>
+      </div>
+
+      <!-- Additional Comments -->
+      <div class="form-group">
+        <label for="comments">Additional Comments</label>
+        <textarea id="comments" name="comments" placeholder="Your message or special requests"></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn-submit">Book Now</button>
+    </form>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- MAIN FOOTER SECTION -->
+<section class="footer-section">
+  <div class="footer-container">
+
+    <!-- LEFT COLUMN: LOGO -->
+    <div class="footer-column logo-column">
+      <img src="images/logo.png" alt="Logo" class="footer-logo">
+    </div>
+
+    <!-- RIGHT COLUMN: QUICK LINKS + FOLLOW US -->
+    <div class="footer-column links-column">
+      
+      <!-- QUICK LINKS -->
+      <div class="footer-block">
+        <h3>QUICK LINKS!</h3>
+        <ul class="quick-links">
+          <li><a href="#">HOME</a></li>
+          <li><a href="#">ABOUT</a></li>
+          <li><a href="#">PORTFOLIO</a></li>
+          <li><a href="#">PROPERTIES</a></li>
+          <li><a href="#">CONTACT</a></li>
+        </ul>
+      </div>
+
+      <!-- FOLLOW US -->
+      <div class="footer-block social-block">
+        <h3>FOLLOW US!</h3>
+        <div class="social-icons">
+          <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
+          <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+          <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+          <a href="#"><img src="images/linkedin.png" alt="LinkedIn"></a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- BOTTOM FOOTER -->
+<footer class="footer-bottom">
+  Mepangilinan Real Estate Brokerage Corporation
+</footer>
+
+
+
+  <!-- LINK TO JS -->
+  <script src="script.js"></script>
+</body>
+</html>
