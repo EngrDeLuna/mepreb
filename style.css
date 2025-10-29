@@ -2740,4 +2740,12 @@ textarea {
     padding: 10px 25px;
     font-size: 0.9rem;
   }
+    .checkbox-group {
+    grid-template-columns: repeat(2, 1fr); /* ✅ 2 columns on mobile */
+    gap: 10px;
+  }
+
+  .checkbox-group label {
+    font-size: 0.85rem;
+  }
 }
