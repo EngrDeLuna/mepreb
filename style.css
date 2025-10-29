@@ -41,7 +41,7 @@
 .navbar nav ul {
   display: flex;
   list-style: none;
-  gap: 40px;
+  gap: 10px;
 }
 
 .navbar nav ul li a {
