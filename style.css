@@ -7,6 +7,9 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
 
 
@@ -146,6 +149,13 @@
 .navbar nav ul li a:hover::after {
   transform: scaleX(1);     /* line grows fully from left to right */
 }
+
+.navbar nav ul li a.active {
+  color: #d4af37;
+   font-weight: bold;
+}
+
+
 
 
 /* CONSULTATION BUTTON */
@@ -367,6 +377,9 @@
   }
 
   #nav-menu ul li a:hover {
+    color: #ffda00;
+  }
+   #nav-menu ul li a.active {
     color: #ffda00;
   }
 
@@ -938,7 +951,7 @@
 .footer-section {
   background-color: #ffffff; /* white background */
   color: #0a1f44; /* dark blue text for links */
-  padding: 100px 8%;
+  padding: 50px 8%;
   box-sizing: border-box;
 }
 
@@ -1025,36 +1038,151 @@
   color: #d4af37;
 }
 
-/* SOCIAL ICONS */
+
+
+
+
+
+
+
+
+/* SOCIAL ICONS CONTAINER */
 .social-icons {
   display: flex;
-  gap: 30px;
-  margin-top: 10px;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: left;
 }
 
-.social-icons a img {
-  font-family: 'Raleway', sans-serif;
-   font-weight: 700;
-  width: 30px;
-  height: 30px;
-  transition: transform 0.3s ease;
+/* INDIVIDUAL SOCIAL ITEM */
+.social-item {
+  position: relative;
+  width: 50px;           /* icon size */
+  height: 50px;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: width 0.4s ease; /* expand width smoothly on hover */
 }
 
-.social-icons a:hover img {
-  transform: scale(1.2);
+/* ICON IMAGE */
+.social-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: opacity 0.4s ease;
 }
+
+/* HOVER DIV (Background + Text) */
+.social-item .social-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 12px;
+  transform: translateX(100%); /* start outside right */
+  opacity: 0;                  /* hide initially */
+  transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
+  white-space: nowrap;
+  padding: 0 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* soft shadow */
+}
+
+/* HOVER EFFECTS */
+.social-item:hover img {
+  opacity: 0; /* hide icon */
+}
+
+.social-item:hover {
+  width: 140px;  /* expand width to show background + text */
+  height: 50px;  /* keep height same */
+}
+
+.social-item:hover .social-hover {
+  transform: translateX(0); /* slide in from right */
+  opacity: 1;               /* show background + text */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35); /* enhanced shadow on hover */
+}
+
+/* BRAND COLORS / GRADIENTS */
+.social-item.facebook .social-hover {
+  background: #1877f2; /* Facebook blue */
+}
+
+.social-item.messenger .social-hover {
+  background: linear-gradient(135deg, #00c6ff, #0078ff); /* Messenger gradient */
+}
+
+.social-item.instagram .social-hover {
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); /* Instagram gradient */
+}
+
+.social-item.tiktok .social-hover {
+  background: linear-gradient(135deg, #010101, #69c9d0, #ee1d52); /* TikTok gradient */
+}
+
+.social-item.twitter .social-hover {
+  background: #1da1f2; /* Twitter blue */
+}
+
+.social-item.youtube .social-hover {
+  background: linear-gradient(135deg, #ff0000, #ff5500); /* YouTube gradient */
+}
+
+/* Mobile / smaller devices */
+@media (max-width: 768px) {
+  .social-icons {
+    gap: 10px; /* smaller spacing between icons */
+    justify-content: center;
+  }
+
+  .social-item {
+    width: 40px;   /* smaller width */
+    height: 40px;  /* smaller height */
+  }
+
+  .social-item img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .social-item .social-hover {
+    font-size: 0.9rem; /* smaller text on hover */
+    padding: 0 8px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* BOTTOM FOOTER */
 .footer-bottom {
   width: 100%;
-   font-family: 'Raleway', sans-serif;
-  background-color: #000000; /* black */
-  color: #ffffff; /* white text */
+  font-family: 'Raleway', sans-serif;
+  background-color: #000000;
+  color: #ffffff;
   text-align: center;
   padding: 20px 0;
   font-weight: 500;
   font-size: 1rem;
 }
+
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
@@ -1803,6 +1931,8 @@
     align-items: start;
     gap: 40px;
     margin-bottom: 80px;
+    
+    
   }
 
   /* REVERSE LAYOUT */
@@ -2617,7 +2747,7 @@
   box-shadow: 0 5px 20px rgba(0,0,0,0.3);
   animation: fadeIn 0.3s ease;
   margin: 0; /* ensures perfect centering */
-    max-height: 90vh; /* limit height to viewport */
+    max-height: 60vh; /* limit height to viewport */
   overflow-y: auto; /* enable scrolling inside modal */
 
 }
