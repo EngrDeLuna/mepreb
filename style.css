@@ -1106,6 +1106,7 @@ html {
 }
 
 .social-item:hover .social-hover {
+   font-family: 'Raleway', sans-serif;
   transform: translateX(0); /* slide in from right */
   opacity: 1;               /* show background + text */
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35); /* enhanced shadow on hover */
