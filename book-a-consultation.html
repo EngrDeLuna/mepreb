@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MREB Corp.</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 <!-- HEADER / NAVBAR -->
@@ -31,12 +32,16 @@
       <li><a href="about.html">ABOUT</a></li>
       <li><a href="portfolio.html">PORTFOLIO</a></li>
       <li><a href="properties.html">PROPERTIES</a></li>
-      <li><a href="propose-site.html">PROPOSE SITE</a></li>
       <li><a href="contact.html">CONTACT</a></li>
     </ul>
   </nav>
 
-  <a href="book-a-consultation.html" class="btn-consult">BOOK A CONSULTATION</a>
+   <div class="header-buttons">
+    <a href="book-a-consultation.html" class="btn-consult">BOOK A CONSULTATION</a>
+    <a href="login.php" class="btn-admin" title="Admin Login">
+      <i class="fa-solid fa-user"></i>
+    </a>
+  </div>
 </header>
 
 
@@ -50,79 +55,66 @@
     <h2>BOOK A CONSULTATION</h2>
     <p>Fill out the form below and our agent will contact you to schedule a consultation.</p>
 
-    <form id="consultationForm">
-      <!-- Personal Information -->
-      <div class="form-group">
-        <label for="fullName">Full Name*</label>
-        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
-      </div>
+   <form id="consultationForm" action="book-consultation.php" method="POST">
+  <div class="form-group">
+    <label for="fullName">Full Name*</label>
+    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+  </div>
+  <div class="form-group">
+    <label for="email">Email*</label>
+    <input type="email" id="email" name="email" placeholder="example@email.com" required>
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone*</label>
+    <input type="tel" id="phone" name="phone" placeholder="+63 912 345 6789" required>
+  </div>
+  <div class="form-group">
+    <label for="company">Company</label>
+    <input type="text" id="company" name="company" placeholder="Optional">
+  </div>
+  <div class="form-group">
+    <label>Transaction Type*</label>
+    <select name="transaction" required>
+      <option value="">Select</option>
+      <option value="buying">Buying</option>
+      <option value="selling">Selling</option>
+      <option value="leasing">Leasing</option>
+      <option value="investment">Investment</option>
+    </select>
+  </div>
+ <div class="form-group">
+  <label>Property Type*</label>
+  <div class="checkbox-group">
+    <label><input type="checkbox" name="propertyType[]" value="residential"> Residential</label>
+    <label><input type="checkbox" name="propertyType[]" value="commercial"> Commercial</label>
+    <label><input type="checkbox" name="propertyType[]" value="lot"> Lot</label>
+    <label><input type="checkbox" name="propertyType[]" value="condo"> Condo</label>
+  </div>
+</div>
 
-      <div class="form-group">
-        <label for="email">Email Address*</label>
-        <input type="email" id="email" name="email" placeholder="example@email.com" required>
-      </div>
+  <div class="form-group">
+    <label for="date">Preferred Date*</label>
+    <input type="date" id="date" name="date" required>
+  </div>
+  <div class="form-group">
+    <label for="time">Preferred Time*</label>
+    <input type="time" id="time" name="time" required>
+  </div>
+  <div class="form-group">
+    <label>Meeting Type*</label>
+    <select name="meetingType" required>
+      <option value="">Select</option>
+      <option value="onsite">On-site Consultation</option>
+      <option value="virtual">Virtual Meeting</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="comments">Additional Comments</label>
+    <textarea name="comments" id="comments" placeholder="Optional"></textarea>
+  </div>
+  <button type="submit" class="btn-submit">Book Now</button>
+</form>
 
-      <div class="form-group">
-        <label for="phone">Phone Number*</label>
-        <input type="tel" id="phone" name="phone" placeholder="+63 912 345 6789" required>
-      </div>
-
-      <div class="form-group">
-        <label for="company">Company (Optional)</label>
-        <input type="text" id="company" name="company" placeholder="Company name (optional)">
-      </div>
-
-      <!-- Property Interest -->
-      <div class="form-group">
-        <label for="transaction">Transaction Type*</label>
-        <select id="transaction" name="transaction" required>
-          <option value="">Select transaction type</option>
-          <option value="buying">Buying</option>
-          <option value="selling">Selling</option>
-          <option value="leasing">Leasing</option>
-          <option value="investment">Investment</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label>Property Type*</label>
-        <div class="checkbox-group">
-          <label><input type="checkbox" name="propertyType" value="residential"> Residential</label>
-          <label><input type="checkbox" name="propertyType" value="commercial"> Commercial</label>
-          <label><input type="checkbox" name="propertyType" value="lot"> Lot</label>
-          <label><input type="checkbox" name="propertyType" value="condo"> Condo</label>
-        </div>
-      </div>
-
-      <!-- Preferred Schedule -->
-      <div class="form-group">
-        <label for="date">Preferred Date*</label>
-        <input type="date" id="date" name="date" required>
-      </div>
-
-      <div class="form-group">
-        <label for="time">Preferred Time*</label>
-        <input type="time" id="time" name="time" required>
-      </div>
-
-      <div class="form-group">
-        <label>Meeting Type*</label>
-        <select id="meetingType" name="meetingType" required>
-          <option value="">Select</option>
-          <option value="onsite">On-site Consultation</option>
-          <option value="virtual">Virtual Meeting</option>
-        </select>
-      </div>
-
-      <!-- Additional Comments -->
-      <div class="form-group">
-        <label for="comments">Additional Comments</label>
-        <textarea id="comments" name="comments" placeholder="Your message or special requests"></textarea>
-      </div>
-
-      <!-- Submit Button -->
-      <button type="submit" class="btn-submit">Book Now</button>
-    </form>
   </div>
 </section>
 

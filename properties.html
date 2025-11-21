@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MREB Corp.</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 <!-- HEADER / NAVBAR -->
@@ -31,12 +32,16 @@
       <li><a href="about.html">ABOUT</a></li>
       <li><a href="portfolio.html">PORTFOLIO</a></li>
       <li><a href="properties.html" class="active">PROPERTIES</a></li>
-      <li><a href="propose-site.html" >PROPOSE SITE</a></li>
       <li><a href="contact.html">CONTACT</a></li>
     </ul>
   </nav>
 
-  <a href="book-a-consultation.html" class="btn-consult">BOOK A CONSULTATION</a>
+   <div class="header-buttons">
+    <a href="book-a-consultation.html" class="btn-consult">BOOK A CONSULTATION</a>
+    <a href="login.php" class="btn-admin" title="Admin Login">
+      <i class="fa-solid fa-user"></i>
+    </a>
+  </div>
 </header>
 
 
@@ -141,7 +146,7 @@
       </div>
       <div class="journey-content">
         <h3 class="stage-title">Stage 1: Planning</h3>
-        <p class="stage-desc">Strategic site selection, blueprint design, and client collaboration.</p>
+        <p class="stage-desc">Strategic site selection, interior fit-out, design detailing, and client collaboration.</p>
       </div>
     </div>
 
@@ -156,24 +161,15 @@
       </div>
     </div>
 
-    <!-- CARD THREE -->
-    <div class="journey-card">
-      <div class="journey-image">
-        <img src="images/stage3.png" alt="Stage 3">
-      </div>
-      <div class="journey-content">
-        <h3 class="stage-title">Stage 3: Finishing</h3>
-        <p class="stage-desc">Interior fit-out, design detailing, and client approval.</p>
-      </div>
-    </div>
+
 
     <!-- CARD FOUR -->
     <div class="journey-card">
       <div class="journey-image">
-        <img src="images/stage4.png" alt="Stage 4">
+        <img src="images/stage4.png" alt="Stage 3">
       </div>
       <div class="journey-content">
-        <h3 class="stage-title">Stage 4: Project Done</h3>
+        <h3 class="stage-title">Stage 3: Project Done</h3>
         <p class="stage-desc">Turnover with pride — your space, ready for success.</p>
       </div>
     </div>
@@ -289,34 +285,36 @@
 </div>
 
 
-<!-- Property Card 4 -->
+
+<!--
 <div class="property-card" data-type="building" data-location="Iloilo">
     <div class="image-container">
-  <img src="images/Enterprise One.png" alt="Enterprise One">
-  </div>
-  <div class="property-info">
-    <h3>Enterprise One</h3>
-    <p><strong>Location:</strong> Iloilo Business Park</p>
-    <p><strong>Floors:</strong> 6th and 7th Floor</p>
-    <p><strong>Total Area:</strong> 5,701.1 sqm</p>
-    <p><strong>PEZA:</strong> Registered, LEED Gold</p>
-    <button class="view-details" data-target="modal4">View Details</button>
-  </div>
+        <img src="images/Enterprise One.png" alt="Enterprise One">
+    </div>
+    <div class="property-info">
+        <h3>Enterprise One</h3>
+        <p><strong>Location:</strong> Iloilo Business Park</p>
+        <p><strong>Floors:</strong> 6th and 7th Floor</p>
+        <p><strong>Total Area:</strong> 5,701.1 sqm</p>
+        <p><strong>PEZA:</strong> Registered, LEED Gold</p>
+        <button class="view-details" data-target="modal4">View Details</button>
+    </div>
 </div>
-<!-- Property Card 5 -->
+
 <div class="property-card" data-type="building" data-location="Iloilo">
     <div class="image-container">
-  <img src="images/Enterprise Two.png" alt="Enterprise Two">
-  </div>
-  <div class="property-info">
-    <h3>Enterprise Two</h3>
-    <p><strong>Location:</strong> Iloilo Business Park</p>
-    <p><strong>Total Floors:</strong> 11</p>
-    <p><strong>Total Area:</strong> 37,633.25 sqm</p>
-    <p><strong>PEZA:</strong> Registered, LEED Gold</p>
-    <button class="view-details" data-target="modal5">View Details</button>
-  </div>
+        <img src="images/Enterprise Two.png" alt="Enterprise Two">
+    </div>
+    <div class="property-info">
+        <h3>Enterprise Two</h3>
+        <p><strong>Location:</strong> Iloilo Business Park</p>
+        <p><strong>Total Floors:</strong> 11</p>
+        <p><strong>Total Area:</strong> 37,633.25 sqm</p>
+        <p><strong>PEZA:</strong> Registered, LEED Gold</p>
+        <button class="view-details" data-target="modal5">View Details</button>
+    </div>
 </div>
+-->
 
 <!-- Property Card 6 -->
 <div class="property-card" data-type="building" data-location="Iloilo">
@@ -347,7 +345,10 @@
   </div>
 </div>
 
-<!-- Property Card 8 -->
+
+
+
+<!--
 <div class="property-card" data-type="building" data-location="Bay Area">
     <div class="image-container">
   <img src="images/The BIOPOLIS.png" alt="The BIOPOLIS">
@@ -361,6 +362,7 @@
     <button class="view-details" data-target="modal8">View Details</button>
   </div>
 </div>
+-->
 
     </div>
   </section>
