@@ -30,10 +30,13 @@ $result = $stmt->get_result();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
     <title>Contact Messages</title>
+
+    <!-- moved Google Fonts into head -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -41,7 +44,7 @@ $result = $stmt->get_result();
 <!-- NAV -->
 <nav class="show-header">
     <a href="admin-dashboard.php" class="back-btn">
-        <img src="images/back.png">
+        <img src="images/back.png" alt="Back">
     </a>
 </nav>
 
@@ -102,7 +105,7 @@ $result = $stmt->get_result();
     <!-- EDIT BUTTON COLUMN -->
     <td class="edit-col">
         <button class="edit-btn" data-id="<?= $row['id'] ?>">
-            <img src="images/edit.png" class="edit-icon">
+            <img src="images/edit.png" class="edit-icon" alt="Edit">
         </button>
     </td>
 </tr>
@@ -110,6 +113,8 @@ $result = $stmt->get_result();
             <?php endwhile; ?>
         </tbody>
     </table>
+
+
 
     <!-- PAGINATION -->
     <div class="pagination">
@@ -134,6 +139,24 @@ $result = $stmt->get_result();
         <a href="?page=<?= min($totalPages, $page + 1) ?>" class="pag-btn <?= $page == $totalPages ? 'disabled' : '' ?>">Next</a>
     </div>
 
+</div>
+
+<!-- ===========================
+     EDIT MODAL (inserted here)
+=========================== -->
+<div id="editModal" class="edit-modal" aria-hidden="true" role="dialog" aria-labelledby="editModalTitle">
+  <div class="edit-modal-content">
+    <button type="button" class="close-edit-modal" aria-label="Close edit modal">&times;</button>
+    <h3 id="editModalTitle">Edit Entry</h3>
+    <form id="editForm" autocomplete="off">
+      <!-- Fields will be inserted dynamically -->
+    </form>
+    <div class="save-btn-container">
+    <button type="button" id="saveModalBtn">
+        <img src="images/save.png" alt="Save">
+    </button>
+</div>
+  </div>
 </div>
 
 <script src="script.js"></script>
