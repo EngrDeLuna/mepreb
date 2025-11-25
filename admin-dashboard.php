@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Manila');
 session_start();
 
 // Redirect if not logged in
@@ -22,7 +23,9 @@ if ($conn->connect_error) {
 $today = date('Y-m-d');
 
 // 1. NEW SUBMISSIONS (contact_messages for today)
-$sql_submissions = "SELECT COUNT(*) as count FROM contact_messages WHERE DATE(created_at) = ?";
+$sql_submissions = "SELECT COUNT(*) as count 
+                    FROM contact_messages 
+                    WHERE DATE(CONVERT_TZ(created_at, '+00:00', '+08:00')) = ?";
 $stmt1 = $conn->prepare($sql_submissions);
 $stmt1->bind_param("s", $today);
 $stmt1->execute();
@@ -30,7 +33,10 @@ $result1 = $stmt1->get_result();
 $new_submissions = ($result1 && $result1->num_rows > 0) ? $result1->fetch_assoc()['count'] : 0;
 
 // 2. UPCOMING (consultation_bookings for today)
-$sql_consultations = "SELECT COUNT(*) as count FROM consultation_bookings WHERE DATE(created_at) = ?";
+$sql_consultations = "SELECT COUNT(*) as count 
+                      FROM consultation_bookings 
+                      WHERE DATE(CONVERT_TZ(created_at, '+00:00', '+08:00')) = ?";
+
 $stmt2 = $conn->prepare($sql_consultations);
 $stmt2->bind_param("s", $today);
 $stmt2->execute();

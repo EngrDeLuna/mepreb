@@ -3284,15 +3284,78 @@ textarea {
     padding: 10px 25px;
     font-size: 0.9rem;
   }
-    .checkbox-group {
-    grid-template-columns: repeat(2, 1fr); /* ✅ 2 columns on mobile */
-    gap: 10px;
+    /* Make PROPERTY TYPE align vertically */
+  .checkbox-group {
+    display: flex;
+    flex-direction: column; /* vertical stack */
+    align-items: flex-start; /* align to the left */
+    gap: 8px; /* spacing between checkboxes */
   }
 
   .checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px; /* space between box and text */
     font-size: 0.85rem;
+    cursor: pointer;
+  }
+
+  .checkbox-group input[type="checkbox"] {
+    width: auto;
+    height: auto;
+    margin: 0;
   }
 }
+
+
+
+
+
+
+/* CAPTCHA wrapper: centers the iframe */
+.captcha-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+/* Scale the reCAPTCHA for smaller devices */
+@media (max-width: 768px) {
+  .captcha-wrapper {
+    transform: scale(0.85);        /* shrink slightly on tablets */
+    transform-origin: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .captcha-wrapper {
+    transform: scale(0.7);         /* shrink more on mobile phones */
+    transform-origin: center;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .login-container {
   display: flex;
   height: 100vh;

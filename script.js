@@ -269,7 +269,6 @@ function fetchNotifications() {
         .then(res => res.json())
         .then(data => {
             const today = new Date().toISOString().split('T')[0];
-            data = data.filter(n => n.date.startsWith(today));
 
             const existingKeys = notificationsCache.map(n => `${n.type}-${n.id}`);
             data.forEach(n => {
@@ -406,142 +405,137 @@ document.getElementById('deleteSelected')?.addEventListener('click', () => {
 
 
 
-
-
-
 // ==============================
 // EDIT MODAL FOR CONTACT & CONSULTATION
 // ==============================
-const editModal = document.getElementById("editModal");
-const editForm = document.getElementById("editForm");
-const saveModalBtn = document.getElementById("saveModalBtn");
-const closeEditModalBtn = editModal.querySelector(".close-edit-modal");
+document.addEventListener("DOMContentLoaded", () => {
+    const editModal = document.getElementById("editModal");
+    const editForm = document.getElementById("editForm");
+    const saveModalBtn = document.getElementById("saveModalBtn");
+    const closeEditModalBtn = editModal?.querySelector(".close-edit-modal"); // optional chaining
 
-let currentRow = null;
-let currentTable = null;
+    if (!editModal || !editForm || !saveModalBtn) return;
 
-// Open modal when edit button is clicked
-document.addEventListener("click", function(e){
-    const btn = e.target.closest(".edit-btn");
-    if(!btn) return;
+    let currentRow = null;
+    let currentTable = null;
 
-    currentRow = btn.closest("tr");
-    if(!currentRow) return;
+    // Open modal when edit button is clicked
+    document.addEventListener("click", (e) => {
+        const btn = e.target.closest(".edit-btn");
+        if (!btn) return;
 
-    currentTable = currentRow.closest("table").id;
+        currentRow = btn.closest("tr");
+        if (!currentRow) return;
 
-    // Clear previous form and classes
-    editForm.innerHTML = "";
-    editForm.className = "";
+        currentTable = currentRow.closest("table").id;
 
-    const cells = currentRow.querySelectorAll("td");
-    const id = btn.dataset.id;
+        // Clear previous form and classes
+        editForm.innerHTML = "";
+        editForm.className = "";
 
-    if(currentTable === "contactTable"){
-        editForm.classList.add("contact-layout"); // 1-column layout
-        const fields = ["full_name","email","phone","message"];
-        fields.forEach((field,i)=>{
-            const value = cells[i+1].innerText;
-            if(field==="message"){
-                editForm.innerHTML += `<label>${field.replace("_"," ").toUpperCase()}</label>
-                    <textarea name="${field}">${value}</textarea>`;
-            } else {
-                editForm.innerHTML += `<label>${field.replace("_"," ").toUpperCase()}</label>
-                    <input type="text" name="${field}" value="${value}">`;
-            }
-        });
-    } else if(currentTable === "consultationTable"){
-        editForm.classList.add("consultation-layout"); // 2-column layout
+        const cells = currentRow.querySelectorAll("td");
 
-        // Create left & right column wrappers
-        const leftCol = document.createElement("div");
-        leftCol.classList.add("col");
+        if (currentTable === "contactTable") {
+            editForm.classList.add("contact-layout"); // 1-column layout
+            const fields = ["full_name", "email", "phone", "message"];
+            fields.forEach((field, i) => {
+                const value = cells[i + 1].innerText;
+                if (field === "message") {
+                    editForm.innerHTML += `<label>${field.replace("_", " ").toUpperCase()}</label>
+                        <textarea name="${field}">${value}</textarea>`;
+                } else {
+                    editForm.innerHTML += `<label>${field.replace("_", " ").toUpperCase()}</label>
+                        <input type="text" name="${field}" value="${value}">`;
+                }
+            });
+        } else if (currentTable === "consultationTable") {
+            editForm.classList.add("consultation-layout"); // 2-column layout
 
-        const rightCol = document.createElement("div");
-        rightCol.classList.add("col");
+            const leftCol = document.createElement("div");
+            leftCol.classList.add("col");
 
-        const leftFields = ["full_name","email","phone","company","property_type"];
-        const rightFields = ["preferred_date","preferred_time","meeting_type","additional_comments"];
+            const rightCol = document.createElement("div");
+            rightCol.classList.add("col");
 
-        // Fill left column
-        // Fill left column
-leftFields.forEach((field,i)=>{
-    const value = cells[i+1].innerText;
+            const leftFields = ["full_name", "email", "phone", "company", "property_type"];
+            const rightFields = ["preferred_date", "preferred_time", "meeting_type", "additional_comments"];
 
-    if(field === "property_type"){
-        leftCol.innerHTML += `<label>${field.replace("_"," ").toUpperCase()}</label>
-            <select name="${field}">
-                <option value="Residential" ${value === "Residential" ? "selected" : ""}>Residential</option>
-                <option value="Commercial" ${value === "Commercial" ? "selected" : ""}>Commercial</option>
-                <option value="Lot" ${value === "Lot" ? "selected" : ""}>Lot</option>
-                <option value="Condo" ${value === "Condo" ? "selected" : ""}>Condo</option>
-            </select>`;
-    } else {
-        leftCol.innerHTML += `<label>${field.replace("_"," ").toUpperCase()}</label>
-            <input type="text" name="${field}" value="${value}">`;
-    }
+            leftFields.forEach((field, i) => {
+                const value = cells[i + 1].innerText;
+                if (field === "property_type") {
+                    leftCol.innerHTML += `<label>${field.replace("_", " ").toUpperCase()}</label>
+                        <select name="${field}">
+                            <option value="Residential" ${value === "Residential" ? "selected" : ""}>Residential</option>
+                            <option value="Commercial" ${value === "Commercial" ? "selected" : ""}>Commercial</option>
+                            <option value="Lot" ${value === "Lot" ? "selected" : ""}>Lot</option>
+                            <option value="Condo" ${value === "Condo" ? "selected" : ""}>Condo</option>
+                        </select>`;
+                } else {
+                    leftCol.innerHTML += `<label>${field.replace("_", " ").toUpperCase()}</label>
+                        <input type="text" name="${field}" value="${value}">`;
+                }
+            });
+
+            rightFields.forEach((field, i) => {
+                const idx = i + leftFields.length;
+                const value = cells[idx + 1].innerText;
+                let type = "text";
+                if (field === "preferred_date") type = "date";
+                if (field === "preferred_time") type = "time";
+
+                if (field === "additional_comments") {
+                    rightCol.innerHTML += `<label>${field.replace("_", " ").toUpperCase()}</label>
+                        <textarea name="${field}">${value}</textarea>`;
+                } else {
+                    rightCol.innerHTML += `<label>${field.replace("_", " ").toUpperCase()}</label>
+                        <input type="${type}" name="${field}" value="${value}">`;
+                }
+            });
+
+            editForm.appendChild(leftCol);
+            editForm.appendChild(rightCol);
+        }
+
+        // Show modal
+        editModal.style.display = "flex";
+    });
+
+    // Close modal
+    closeEditModalBtn?.addEventListener("click", () => {
+        editModal.style.display = "none";
+    });
+    window.addEventListener("click", (e) => {
+        if (e.target === editModal) editModal.style.display = "none";
+    });
+
+    // Save modal changes
+    saveModalBtn?.addEventListener("click", () => {
+        if (!currentRow) return;
+
+        const formData = Object.fromEntries(new FormData(editForm).entries());
+        const id = currentRow.querySelector(".edit-btn").dataset.id;
+        formData.id = id;
+
+        const endpoint = currentTable === "contactTable" ? "editable_contact.php" : "editable_consultation.php";
+
+        fetch(endpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+        })
+            .then((res) => res.json())
+            .then((resp) => {
+                if (resp.success) {
+                    const cells = currentRow.querySelectorAll("td");
+                    let i = 1;
+                    for (let key in formData) {
+                        if (key === "id") continue;
+                        cells[i].textContent = formData[key];
+                        i++;
+                    }
+                    editModal.style.display = "none";
+                } else alert("Error saving: " + resp.error);
+            })
+            .catch((err) => alert("An error occurred: " + err));
+    });
 });
-
-
-        // Fill right column
-        rightFields.forEach((field,i)=>{
-            const idx = i + leftFields.length;
-            const value = cells[idx+1].innerText;
-            let type = "text";
-            if(field==="preferred_date") type="date";
-            if(field==="preferred_time") type="time";
-            if(field==="additional_comments"){
-                rightCol.innerHTML += `<label>${field.replace("_"," ").toUpperCase()}</label>
-                    <textarea name="${field}">${value}</textarea>`;
-            } else {
-                rightCol.innerHTML += `<label>${field.replace("_"," ").toUpperCase()}</label>
-                    <input type="${type}" name="${field}" value="${value}">`;
-            }
-        });
-
-        // Append columns to form
-        editForm.appendChild(leftCol);
-        editForm.appendChild(rightCol);
-    }
-
-    // Show modal
-    editModal.style.display = "flex";
-});
-
-// Close modal
-closeEditModalBtn.onclick = () => editModal.style.display = "none";
-window.onclick = e => { if(e.target === editModal) editModal.style.display = "none"; };
-
-// Save modal changes
-saveModalBtn.onclick = ()=>{
-    if(!currentRow) return;
-
-    const formData = Object.fromEntries(new FormData(editForm).entries());
-    const id = currentRow.querySelector(".edit-btn").dataset.id;
-    formData.id = id;
-
-    const endpoint = currentTable==="contactTable" ? "editable_contact.php" : "editable_consultation.php";
-
-    fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
-    })
-    .then(res=>res.json())
-    .then(resp=>{
-        if(resp.success){
-            const cells = currentRow.querySelectorAll("td");
-            let i=1;
-            for(let key in formData){
-                if(key==="id") continue;
-                cells[i].textContent = formData[key];
-                i++;
-            }
-            editModal.style.display="none";
-        } else alert("Error saving: "+resp.error);
-    })
-    .catch(err => alert("An error occurred: " + err));
-};
-
-
-

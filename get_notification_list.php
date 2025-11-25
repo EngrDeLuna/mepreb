@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Manila');
 header('Content-Type: application/json');
 
 $conn = new mysqli("localhost", "root", "", "mepreb");
@@ -16,7 +17,7 @@ $today = date('Y-m-d');
 $sql_contact = "SELECT * 
                 FROM contact_messages 
                 WHERE read_status = 0 
-                AND DATE(created_at) = ?
+               AND DATE(CONVERT_TZ(created_at, '+00:00', '+08:00')) = ?
                 ORDER BY created_at DESC
                 LIMIT 10";
 $stmt = $conn->prepare($sql_contact);
@@ -46,7 +47,7 @@ while ($row = $result_contact->fetch_assoc()) {
 $sql_consult = "SELECT * 
                 FROM consultation_bookings 
                 WHERE read_status = 0 
-                AND DATE(created_at) = ?
+                 AND DATE(CONVERT_TZ(created_at, '+00:00', '+08:00')) = ?
                 ORDER BY created_at DESC
                 LIMIT 10";
 $stmt2 = $conn->prepare($sql_consult);
