@@ -5,8 +5,11 @@ const menuToggle = document.getElementById('menu-toggle');
 const navMenu = document.getElementById('nav-menu');
 
 menuToggle?.addEventListener('click', () => {
+    // Toggle hamburger icon active state
     menuToggle.classList.toggle('active');
+    // Toggle navigation menu visibility
     navMenu.classList.toggle('active');
+    // Toggle body class to prevent background scroll when menu is open
     document.body.classList.toggle('menu-open');
 });
 
@@ -20,8 +23,10 @@ function moveAdminBtn() {
     if (!btnAdmin || !navMenu || !headerButtons) return;
 
     if (window.innerWidth <= 1024) {
+        // Move admin button inside the nav menu on smaller screens
         if (!navMenu.contains(btnAdmin)) navMenu.appendChild(btnAdmin);
     } else {
+        // Move admin button back to header on larger screens
         if (!headerButtons.contains(btnAdmin)) headerButtons.appendChild(btnAdmin);
     }
 }
@@ -32,6 +37,7 @@ window.addEventListener('resize', moveAdminBtn);
 // HIGHLIGHT IMAGE GALLERY
 // ==============================
 const highlightSections = document.querySelectorAll(".highlight-item");
+
 highlightSections.forEach(section => {
     const mainImg = section.querySelector(".highlight-image img");
     const thumbs = section.querySelectorAll(".thumbnail-gallery .thumb");
@@ -40,15 +46,18 @@ highlightSections.forEach(section => {
     let currentIndex = 0;
 
     function showImage(index) {
+        // Fade out, change image, then fade in
         mainImg.style.opacity = 0;
         setTimeout(() => {
             mainImg.src = thumbs[index].src;
             mainImg.style.opacity = 1;
+            // Update active thumbnail class
             thumbs.forEach(t => t.classList.remove("active-thumb"));
             thumbs[index].classList.add("active-thumb");
         }, 250);
     }
 
+    // Add click events to thumbnails
     thumbs.forEach((thumb, index) => {
         thumb.addEventListener("click", () => {
             currentIndex = index;
@@ -56,11 +65,13 @@ highlightSections.forEach(section => {
         });
     });
 
+    // Auto-rotate images every 3 seconds
     setInterval(() => {
         currentIndex = (currentIndex + 1) % thumbs.length;
         showImage(currentIndex);
     }, 3000);
 
+    // Initial display
     showImage(currentIndex);
 });
 
@@ -93,6 +104,7 @@ function filterProperties() {
             (selectedType === "building" && isBuilding) ||
             (selectedType === "floor" && isFloorOnly);
 
+        // Show/hide property card based on filters
         card.style.display = (matchesSearch && matchesType) ? "block" : "none";
     });
 }
@@ -107,6 +119,7 @@ const modals = document.querySelectorAll(".modal");
 const viewButtons = document.querySelectorAll(".view-details");
 const closeButtons = document.querySelectorAll(".close");
 
+// Open modal when view button is clicked
 viewButtons.forEach(button => {
     button.addEventListener("click", () => {
         const modal = document.getElementById(button.dataset.target);
@@ -117,6 +130,7 @@ viewButtons.forEach(button => {
     });
 });
 
+// Close modal when close button is clicked
 closeButtons.forEach(btn => {
     btn.addEventListener("click", () => {
         const modal = btn.closest(".modal");
@@ -127,6 +141,7 @@ closeButtons.forEach(btn => {
     });
 });
 
+// Close modal when clicking outside content
 window.addEventListener("click", e => {
     modals.forEach(modal => {
         if (e.target === modal) {
@@ -146,6 +161,7 @@ const notificationCountElem = document.querySelector('.notification-count');
 
 let notificationsCache = [];
 
+// Ensure modal exists for notification details
 let modal = document.getElementById('notif-modal');
 if (!modal) {
     modal = document.createElement('div');
@@ -159,9 +175,11 @@ if (!modal) {
     `;
     document.body.appendChild(modal);
 }
+
 const modalContent = modal.querySelector('.modal-body');
 const closeBtn = modal.querySelector('.close');
 
+// Render notifications list
 function renderNotifications() {
     if (!list || !notificationCountElem) return;
 
@@ -184,6 +202,7 @@ function renderNotifications() {
             <small>${item.date}</small>
         `;
 
+        // Click notification to view details
         li.addEventListener('click', () => {
             const nameText = item.full_name || item.title || 'N/A';
             const purposeText = item.subject || item.transaction_type || 'N/A';
@@ -241,6 +260,7 @@ function renderNotifications() {
             modal.style.display = 'flex';
             dropdown?.classList.remove('show');
 
+            // Mark notification as read
             if(item.id) {
                 fetch('mark_as_read.php', {
                     method: 'POST',
@@ -264,12 +284,11 @@ function renderNotifications() {
     notificationCountElem.textContent = notificationsCache.length;
 }
 
+// Fetch notifications from server
 function fetchNotifications() {
     fetch('get_notification_list.php')
         .then(res => res.json())
         .then(data => {
-            const today = new Date().toISOString().split('T')[0];
-
             const existingKeys = notificationsCache.map(n => `${n.type}-${n.id}`);
             data.forEach(n => {
                 const key = `${n.type}-${n.id}`;
@@ -283,21 +302,25 @@ function fetchNotifications() {
         .catch(err => console.error(err));
 }
 
+// Toggle notification dropdown
 bellWrapper?.addEventListener('click', e => {
     e.stopPropagation();
     dropdown?.classList.toggle('show');
     renderNotifications();
 });
 
+// Close dropdown if clicking outside
 document.addEventListener('click', e => {
     if (!dropdown?.contains(e.target) && !bellWrapper?.contains(e.target)) {
         dropdown?.classList.remove('show');
     }
 });
 
+// Modal close events
 closeBtn?.addEventListener('click', () => modal.style.display = 'none');
 window.addEventListener('click', e => { if(e.target === modal) modal.style.display='none'; });
 
+// Initial fetch and refresh every 5 seconds
 fetchNotifications();
 setInterval(fetchNotifications, 5000);
 
@@ -315,7 +338,7 @@ tableSearchInput?.addEventListener("input", function() {
 
     rows.forEach(row => {
         const cells = row.querySelectorAll("td");
-        if (cells.length >= 4) { // ensure we have enough cells
+        if (cells.length >= 4) {
             const name = cells[1].textContent.toLowerCase();
             const email = cells[2].textContent.toLowerCase();
             const phone = cells[3].textContent.toLowerCase();
@@ -323,7 +346,6 @@ tableSearchInput?.addEventListener("input", function() {
         }
     });
 });
-
 
 // ==============================
 // SELECT / DELETE TABLE ROWS
@@ -344,6 +366,7 @@ function toggleRowHighlight(checkbox) {
     row?.classList.toggle('row-selected', checkbox.checked);
 }
 
+// Listen to checkbox changes
 document.addEventListener('change', (e) => {
     if (e.target.classList.contains('rowCheckbox')) {
         toggleRowHighlight(e.target);
@@ -354,6 +377,7 @@ document.addEventListener('change', (e) => {
     }
 });
 
+// Select/deselect all rows
 selectAllCheckbox?.addEventListener('change', () => {
     const rowCheckboxes = document.querySelectorAll('.rowCheckbox');
     rowCheckboxes.forEach(cb => {
@@ -363,6 +387,7 @@ selectAllCheckbox?.addEventListener('change', () => {
     updateSelectedCount();
 });
 
+// Delete selected rows
 document.getElementById('deleteSelected')?.addEventListener('click', () => {
     const rowCheckboxes = document.querySelectorAll('.rowCheckbox');
     const selectedIds = Array.from(rowCheckboxes)
@@ -391,20 +416,6 @@ document.getElementById('deleteSelected')?.addEventListener('click', () => {
     .catch(err => { console.error(err); alert('An error occurred.'); });
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // ==============================
 // EDIT MODAL FOR CONTACT & CONSULTATION
 // ==============================
@@ -412,14 +423,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const editModal = document.getElementById("editModal");
     const editForm = document.getElementById("editForm");
     const saveModalBtn = document.getElementById("saveModalBtn");
-    const closeEditModalBtn = editModal?.querySelector(".close-edit-modal"); // optional chaining
+    const closeEditModalBtn = editModal?.querySelector(".close-edit-modal");
 
     if (!editModal || !editForm || !saveModalBtn) return;
 
     let currentRow = null;
     let currentTable = null;
 
-    // Open modal when edit button is clicked
+    // Open edit modal
     document.addEventListener("click", (e) => {
         const btn = e.target.closest(".edit-btn");
         if (!btn) return;
@@ -429,14 +440,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         currentTable = currentRow.closest("table").id;
 
-        // Clear previous form and classes
         editForm.innerHTML = "";
         editForm.className = "";
 
         const cells = currentRow.querySelectorAll("td");
 
         if (currentTable === "contactTable") {
-            editForm.classList.add("contact-layout"); // 1-column layout
+            editForm.classList.add("contact-layout");
             const fields = ["full_name", "email", "phone", "message"];
             fields.forEach((field, i) => {
                 const value = cells[i + 1].innerText;
@@ -449,7 +459,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         } else if (currentTable === "consultationTable") {
-            editForm.classList.add("consultation-layout"); // 2-column layout
+            editForm.classList.add("consultation-layout");
 
             const leftCol = document.createElement("div");
             leftCol.classList.add("col");
@@ -496,17 +506,12 @@ document.addEventListener("DOMContentLoaded", () => {
             editForm.appendChild(rightCol);
         }
 
-        // Show modal
         editModal.style.display = "flex";
     });
 
-    // Close modal
-    closeEditModalBtn?.addEventListener("click", () => {
-        editModal.style.display = "none";
-    });
-    window.addEventListener("click", (e) => {
-        if (e.target === editModal) editModal.style.display = "none";
-    });
+    // Close edit modal
+    closeEditModalBtn?.addEventListener("click", () => editModal.style.display = "none");
+    window.addEventListener("click", (e) => { if (e.target === editModal) editModal.style.display = "none"; });
 
     // Save modal changes
     saveModalBtn?.addEventListener("click", () => {
@@ -523,19 +528,115 @@ document.addEventListener("DOMContentLoaded", () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData)
         })
-            .then((res) => res.json())
-            .then((resp) => {
-                if (resp.success) {
-                    const cells = currentRow.querySelectorAll("td");
-                    let i = 1;
-                    for (let key in formData) {
-                        if (key === "id") continue;
-                        cells[i].textContent = formData[key];
-                        i++;
-                    }
-                    editModal.style.display = "none";
-                } else alert("Error saving: " + resp.error);
-            })
-            .catch((err) => alert("An error occurred: " + err));
+        .then((res) => res.json())
+        .then((resp) => {
+            if (resp.success) {
+                const cells = currentRow.querySelectorAll("td");
+                let i = 1;
+                for (let key in formData) {
+                    if (key === "id") continue;
+                    cells[i].textContent = formData[key];
+                    i++;
+                }
+                editModal.style.display = "none";
+            } else alert("Error saving: " + resp.error);
+        })
+        .catch((err) => alert("An error occurred: " + err));
     });
+});
+
+// ==============================
+// SCROLL ANIMATION FOR ELEMENTS (IntersectionObserver)
+// ==============================
+document.addEventListener("DOMContentLoaded", () => {
+    const elements = document.querySelectorAll(
+        ".scroll-card, .what-we-do h2, .what-we-do .subtitle, .core-services h2, .core-services .subtitle"
+    );
+
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add("show");
+                else entry.target.classList.remove("show");
+            });
+        }, { threshold: 0.25 });
+
+        elements.forEach(el => observer.observe(el));
+    } else {
+        elements.forEach(el => el.classList.add("show"));
+    }
+});
+
+// ==============================
+// SCROLL ANIMATION FOR FEATURED PROJECTS
+// ==============================
+document.addEventListener("DOMContentLoaded", () => {
+  const projectItems = document.querySelectorAll(".project-item");
+  const titles = document.querySelectorAll(".featured-projects h2, .featured-projects .subtitle");
+
+  if ("IntersectionObserver" in window) {
+    const projectObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const item = entry.target;
+        const direction = Array.from(projectItems).indexOf(item) % 2 === 0 ? "from-left" : "from-right";
+        if (entry.isIntersecting) item.classList.add("show", direction);
+        else item.classList.remove("show", "from-left", "from-right");
+      });
+    }, { threshold: 0.25 });
+
+    projectItems.forEach(item => projectObserver.observe(item));
+
+    const titleObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("show");
+        else entry.target.classList.remove("show");
+      });
+    }, { threshold: 0.1 });
+
+    titles.forEach(el => titleObserver.observe(el));
+  } else {
+    projectItems.forEach(item => item.classList.add("show"));
+    titles.forEach(el => el.classList.add("show"));
+  }
+});
+
+// ==============================
+// ZOOM-IN SCROLL ANIMATION
+// ==============================
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll(".zoom-scroll");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("active");
+        else entry.target.classList.remove("active");
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  sections.forEach((section) => observer.observe(section));
+});
+
+// ==============================
+// TIMELINE ANIMATION
+// ==============================
+document.addEventListener("DOMContentLoaded", () => {
+  const timelineItems = document.querySelectorAll(".timeline-item");
+  const timelineHeader = document.querySelectorAll(".timeline-section h2, .timeline-section hr");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        timelineHeader.forEach(el => el.classList.add("show"));
+      } else {
+        entry.target.classList.remove("show");
+        timelineHeader.forEach(el => el.classList.remove("show"));
+      }
+    });
+  }, { threshold: 0.4 });
+
+  timelineItems.forEach(item => observer.observe(item));
 });

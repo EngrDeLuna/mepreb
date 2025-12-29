@@ -1,32 +1,68 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+
 <head>
+  <!-- ======================================================
+       DOCUMENT METADATA
+       ====================================================== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MREB Corp.</title>
+
+  <!-- ======================================================
+       GOOGLE FONTS
+       ====================================================== -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- ======================================================
+       PRIMARY SEO META TAGS
+       ====================================================== -->
+  <title>Mepangilinan Real Estate Brokerage Corporation | MEPREB | MREB</title>
+  <meta name="description" content="Mepangilinan Real Estate Brokerage Corporation (MEPREB | MREB) offers trusted real estate solutions, property brokerage, and investment services in the Philippines.">
+  <meta name="keywords" content="Mepangilinan Real Estate, MEPREB, MREB, real estate, property brokerage, Philippines">
+
+  <!-- ======================================================
+       OPEN GRAPH / SOCIAL MEDIA META TAGS
+       ====================================================== -->
+  <meta property="og:title" content="Mepangilinan Real Estate Brokerage Corp">
+  <meta property="og:description" content="Professional real estate brokerage services in the Philippines. Trusted solutions for buying, selling, and leasing properties.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mepreb.com/">
+  <meta property="og:image" content="https://mepreb.com/images/logo.png">
+
+  <!-- ======================================================
+       FAVICON
+       ====================================================== -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+
+  <!-- ======================================================
+       STYLESHEETS
+       ====================================================== -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
 
-<!-- HEADER / NAVBAR -->
+<!-- ======================================================
+     HEADER / NAVIGATION BAR
+     ====================================================== -->
 <header class="navbar">
-  <div class="logo">
-  <a href="index.html">
-    <img src="images/logo.png" alt="MREB Logo">
-  </a>
-</div>
 
-  <!-- HAMBURGER ICON -->
+  <!-- COMPANY LOGO -->
+  <div class="logo">
+    <a href="index.html">
+      <img src="images/logo.png" alt="MREB Logo">
+    </a>
+  </div>
+
+  <!-- MOBILE MENU TOGGLE -->
   <div class="menu-toggle" id="menu-toggle">
     <span></span>
     <span></span>
     <span></span>
   </div>
 
-  <!-- NAVIGATION MENU -->
+  <!-- MAIN NAVIGATION MENU -->
   <nav id="nav-menu">
     <ul>
       <li><a href="index.html">HOME</a></li>
@@ -37,76 +73,77 @@
     </ul>
   </nav>
 
+  <!-- HEADER ACTION BUTTONS -->
   <div class="header-buttons">
     <a href="book-a-consultation.html" class="btn-consult">BOOK A CONSULTATION</a>
     <a href="login.php" class="btn-admin" title="Admin Login">
       <i class="fa-solid fa-user"></i>
     </a>
   </div>
+
 </header>
 
-
-
-<!-- ============================== -->
-<!-- PORTFOLIO HERO SECTION -->
-<!-- ============================== -->
-<section class="portfolio-hero-section " >
+<!-- ======================================================
+     PORTFOLIO HERO SECTION
+     ====================================================== -->
+<section class="portfolio-hero-section">
   <div class="portfolio-hero-container">
-    <!-- LEFT: TEXT CONTENT -->
+
+    <!-- HERO TEXT CONTENT -->
     <div class="portfolio-hero-text">
       <h1>OUR COMMITMENT TO CLIENTS</h1>
       <hr class="portfolio-hero-line">
       <p>
-        At <span class="highlight-blue">Mepangilinan Real Estate Brokerage Corporation</span>, 
-        we believe that real estate is more than just buying and selling properties — 
-        it’s about <span class="highlight-yellow">building futures, securing investments, cultivating trust.</span> 
-        As a premier real estate and brokerage firm, we are committed to delivering 
-        <span class="highlight-yellow">unparalleled service</span> backed by 
-        <span class="highlight-yellow">integrity, expertise,</span> and a 
+        At <span class="highlight-blue">Mepangilinan Real Estate Brokerage Corporation</span>,
+        we believe that real estate is more than just buying and selling properties —
+        it’s about <span class="highlight-yellow">building futures, securing investments, cultivating trust.</span>
+        As a premier real estate and brokerage firm, we are committed to delivering
+        <span class="highlight-yellow">unparalleled service</span> backed by
+        <span class="highlight-yellow">integrity, expertise,</span> and a
         <span class="highlight-yellow">deep understanding of the market.</span>
       </p>
     </div>
 
-    <!-- RIGHT: IMAGE -->
+    <!-- HERO IMAGE -->
     <div class="portfolio-hero-image">
       <img src="images/about.png" alt="Our Commitment to Clients">
     </div>
+
   </div>
 
-  <!-- BUTTON CENTERED BELOW -->
- <div class="hero-buttons">
-  <a href="#project-highlights" class="btn-yellow">
-    SEE OUR PROJECTS BELOW <span class="arrow">➤</span>
-  </a>
-</div>
-
+  <!-- HERO CTA BUTTON -->
+  <div class="hero-buttons">
+    <a href="#project-highlights" class="btn-yellow">
+      SEE OUR PROJECTS BELOW <span class="arrow">➤</span>
+    </a>
+  </div>
 </section>
 
-
-
-<!-- ============================== -->
-<!-- PROJECT HIGHLIGHTS SECTION -->
-<!-- ============================== -->
+<!-- ======================================================
+     PROJECT HIGHLIGHTS SECTION
+     ====================================================== -->
 <section id="project-highlights" class="project-highlights">
+
+  <!-- SECTION HEADER -->
   <div class="section-header">
     <h2>Project Highlights: Our Existing Clients <br> & Completed Works</h2>
     <p>Delivering trusted spaces for industry leaders.</p>
   </div>
 
-  <!-- PROJECT 1 -->
+  <!-- ===================== PROJECT 1 ===================== -->
   <div class="highlight-item">
     <div class="highlight-image">
       <img src="images/chii1.png" alt="Carenet Health Institute">
       <div class="thumbnail-gallery">
-        <img src="images/chii1.png" alt="Thumbnail 1" class="thumb">
-        <img src="images/chii2.png" alt="Thumbnail 2" class="thumb">
-        <img src="images/chii3.png" alt="Thumbnail 3" class="thumb">
-        <img src="images/chii4.png" alt="Thumbnail 4" class=  "thumb">
-        <img src="images/chii5.png" alt="Thumbnail 5" class="thumb">
+        <img src="images/chii1.png" class="thumb">
+        <img src="images/chii2.png" class="thumb">
+        <img src="images/chii3.png" class="thumb">
+        <img src="images/chii4.png" class="thumb">
+        <img src="images/chii5.png" class="thumb">
       </div>
     </div>
     <div class="highlight-info">
-      <h3>Carenet Health​</h3>
+      <h3>Carenet Health</h3>
       <hr>
       <p class="location"><em>Circuit Corporate Tower 1, Makati</em></p>
       <div class="highlight-details">
@@ -116,101 +153,68 @@
         <p>Handover Date: May 2025</p>
         <p>Project Location: 17 & 18F Circuit Corporate Center Tower One</p>
       </div>
-       <!-- Add button here -->
       <button class="project-btn">VIEW PROJECT DETAILS</button>
     </div>
   </div>
 
-  <!-- PROJECT 2 -->
+  <!-- ===================== PROJECT 2 ===================== -->
   <div class="highlight-item reverse">
     <div class="highlight-image">
-      <img src="images/aii1.png" alt="ABC Tech Solutions">
+      <img src="images/aii1.png" alt="Altius Infocom">
       <div class="thumbnail-gallery">
-        <img src="images/aii1.png" alt="Thumbnail 1" class="thumb">
-        <img src="images/aii2.png" alt="Thumbnail 2" class="thumb">
-        <img src="images/aii3.png" alt="Thumbnail 3" class="thumb">
-        <img src="images/aii4.png" alt="Thumbnail 4" class="thumb">
-        <img src="images/aii5.png" alt="Thumbnail 5" class="thumb">
+        <img src="images/aii1.png" class="thumb">
+        <img src="images/aii2.png" class="thumb">
+        <img src="images/aii3.png" class="thumb">
+        <img src="images/aii4.png" class="thumb">
+        <img src="images/aii5.png" class="thumb">
       </div>
     </div>
     <div class="highlight-info">
-      <h3>Altius Infocom Inc.​</h3>
+      <h3>Altius Infocom Inc.</h3>
       <hr>
       <p class="location"><em>Circuit Corporate Tower 1, Makati</em></p>
       <div class="highlight-details">
-  <p>Floor Area: 4870 sqm</p>
-  <p>Seat Capacity: 774</p>
-  <p>Contract: 5 + 2 years</p>
-  <p>Handover Date: August 2024</p>
-  <p>Project Location: 24 & 25F Circuit Corporate Center Tower</p>
-</div>
-
-       <button class="project-btn">VIEW PROJECT DETAILS</button>
+        <p>Floor Area: 4870 sqm</p>
+        <p>Seat Capacity: 774</p>
+        <p>Contract: 5 + 2 years</p>
+        <p>Handover Date: August 2024</p>
+        <p>Project Location: 24 & 25F Circuit Corporate Center Tower</p>
+      </div>
+      <button class="project-btn">VIEW PROJECT DETAILS</button>
     </div>
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-  <!-- PROJECT 3 -->
+  <!-- ===================== PROJECT 3 ===================== -->
   <div class="highlight-item">
     <div class="highlight-image">
-      <img src="images/isnpiro1.png" alt="NextGen Offices">
+      <img src="images/isnpiro1.png" alt="Altius Inspiro">
       <div class="thumbnail-gallery">
         <img src="images/isnpiro1.png" class="thumb">
-       <img src="images/inspiro2.png" class="thumb">
-       <img src="images/inspiro3.png" class="thumb">
-       <img src="images/inspiro4.png" class="thumb">
-       <img src="images/inspiro5.png" class="thumb">
+        <img src="images/inspiro2.png" class="thumb">
+        <img src="images/inspiro3.png" class="thumb">
+        <img src="images/inspiro4.png" class="thumb">
+        <img src="images/inspiro5.png" class="thumb">
       </div>
     </div>
     <div class="highlight-info">
-      <h3> Altius Inspiro Inc</h3>
+      <h3>Altius Inspiro Inc</h3>
       <hr>
       <p class="location"><em>Circuit Corporate Tower 1, Makati</em></p>
       <div class="highlight-details">
-  <p>Floor Area: 2420.6 sqm</p>
-  <p>Seat Capacity: 280</p>
-  <p>Contract: 5 + 2 years</p>
-  <p>Handover Date: July 2025</p>
-  <p>Project Location: 16F Circuit Corporate Center Tower One</p>
-</div>
-
-       <button class="project-btn">VIEW PROJECT DETAILS</button>
+        <p>Floor Area: 2420.6 sqm</p>
+        <p>Seat Capacity: 280</p>
+        <p>Contract: 5 + 2 years</p>
+        <p>Handover Date: July 2025</p>
+        <p>Project Location: 16F Circuit Corporate Center Tower One</p>
+      </div>
+      <button class="project-btn">VIEW PROJECT DETAILS</button>
     </div>
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- PROJECT 4 -->
+  <!-- ===================== PROJECT 4 ===================== -->
   <div class="highlight-item reverse">
     <div class="highlight-image">
-      <img src="images/comelec1.png" alt="BrightPath Consulting">
+      <img src="images/comelec1.png" alt="COMELEC Project">
       <div class="thumbnail-gallery">
         <img src="images/comelec1.png" class="thumb">
         <img src="images/comelec2.png" class="thumb">
@@ -220,49 +224,23 @@
       </div>
     </div>
     <div class="highlight-info">
-      <h3>COMELEC/IONE and MIRU</h3>
+      <h3>COMELEC / IONE / MIRU</h3>
       <hr>
       <p class="location"><em>Circuit Corporate Tower 1, Makati</em></p>
       <div class="highlight-details">
-  <p>Project: COMELEC/IONE and MIRU</p>
-  <p>Floor Area: 1142.5 sqm</p>
-  <p>Seat Capacity: 100</p>
-  <p>Contract: 1 year</p>
-  <p>Project Location: Circuit Corporate Center</p>
-</div>
-       <button class="project-btn">VIEW PROJECT DETAILS</button>
+        <p>Floor Area: 1142.5 sqm</p>
+        <p>Seat Capacity: 100</p>
+        <p>Contract: 1 year</p>
+        <p>Project Location: Circuit Corporate Center</p>
+      </div>
+      <button class="project-btn">VIEW PROJECT DETAILS</button>
     </div>
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- PROJECT 5 -->
+  <!-- ===================== PROJECT 5 ===================== -->
   <div class="highlight-item">
     <div class="highlight-image">
-      <img src="images/everglow1.png" alt="MetroLink Logistics">
+      <img src="images/everglow1.png" alt="Everglow AI">
       <div class="thumbnail-gallery">
         <img src="images/everglow1.png" class="thumb">
         <img src="images/everglow2.png" class="thumb">
@@ -275,24 +253,21 @@
       <h3>Everglow AI OPC</h3>
       <hr>
       <p class="location"><em>Sapphire Road, Ortigas Center</em></p>
-     <div class="highlight-details">
-  <p>Floor Area: 1,288.81 sqm</p>
-  <p>Seat Capacity: 300</p>
-  <p>Contract: 2 years</p>
-  <p>Project Location: 11 Ortigas Ave</p>
-</div>
-
-       <button class="project-btn">VIEW PROJECT DETAILS</button>
+      <div class="highlight-details">
+        <p>Floor Area: 1,288.81 sqm</p>
+        <p>Seat Capacity: 300</p>
+        <p>Contract: 2 years</p>
+        <p>Project Location: 11 Ortigas Ave</p>
+      </div>
+      <button class="project-btn">VIEW PROJECT DETAILS</button>
     </div>
   </div>
+
 </section>
 
-
-
-
-
-
-
+<!-- ======================================================
+     CALL TO ACTION SECTION
+     ====================================================== -->
 <section class="cta-section">
   <h2>Ready to Start Your Project?</h2>
   <div class="cta-buttons">
@@ -301,21 +276,21 @@
   </div>
 </section>
 
-
-
-
-
-
-<!-- ============================== -->
-<!-- FOOTER SECTION -->
-<!-- ============================== -->
+<!-- ======================================================
+     FOOTER SECTION
+     ====================================================== -->
 <section class="footer-section">
   <div class="footer-container">
+
+    <!-- FOOTER LOGO -->
     <div class="footer-column logo-column">
       <img src="images/logo.png" alt="Logo" class="footer-logo">
     </div>
 
+    <!-- FOOTER LINKS & SOCIALS -->
     <div class="footer-column links-column">
+
+      <!-- QUICK LINKS -->
       <div class="footer-block">
         <h3>QUICK LINKS!</h3>
         <ul class="quick-links">
@@ -327,60 +302,31 @@
         </ul>
       </div>
 
+      <!-- SOCIAL MEDIA ICONS -->
       <div class="footer-block social-block">
         <h3>FOLLOW US!</h3>
-       
-     
-  <!-- SOCIAL ICONS HTML -->
-<div class="social-icons">
-  <!-- Facebook -->
-  <div class="social-item facebook">
-    <img src="images/facebook.png" alt="Facebook Icon">
-    <div class="social-hover">Facebook</div>
-  </div>
-
-  <!-- Instagram -->
-  <div class="social-item instagram">
-    <img src="images/ig.png" alt="Instagram Icon">
-    <div class="social-hover">Instagram</div>
-  </div>
-
-  <!-- Twitter -->
-  <div class="social-item twitter">
-    <img src="images/twitter.png" alt="Twitter Icon">
-    <div class="social-hover">Twitter</div>
-  </div>
-
-  <!-- YouTube -->
-  <div class="social-item youtube">
-    <img src="images/youtube.png" alt="YouTube Icon">
-    <div class="social-hover">YouTube</div>
-  </div>
-
-  <!-- Optional TikTok -->
-  <div class="social-item tiktok">
-    <img src="images/tiktok.png" alt="TikTok Icon">
-    <div class="social-hover">TikTok</div>
-  </div>
-
-  <!-- Optional Messenger -->
-  <div class="social-item messenger">
-    <img src="images/messenger.png" alt="Messenger Icon">
-    <div class="social-hover">Messenger</div>
-  </div>
-</div>
+        <div class="social-icons">
+          <div class="social-item facebook"><img src="images/facebook.png"></div>
+          <div class="social-item instagram"><img src="images/ig.png"></div>
+          <div class="social-item twitter"><img src="images/twitter.png"></div>
+          <div class="social-item youtube"><img src="images/youtube.png"></div>
+          <div class="social-item tiktok"><img src="images/tiktok.png"></div>
+          <div class="social-item messenger"><img src="images/messenger.png"></div>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
 
 <footer class="footer-bottom">
-  Mepangilinan Real Estate Brokerage Corporation
+  © 2025 Mepangilinan Real Estate Brokerage Corporation. All rights reserved.
 </footer>
 
-
-<!-- LINK TO JS -->
+<!-- ======================================================
+     JAVASCRIPT FILE
+     ====================================================== -->
 <script src="script.js"></script>
+
 </body>
 </html>
-

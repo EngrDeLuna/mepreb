@@ -1,19 +1,45 @@
-
 <!DOCTYPE html>
 <html lang="en">
- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
 
-
- <head>
+<head>
+  <!-- ============================
+       META TAGS
+  ============================ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MREB Corp</title>
+
+  
+<!-- ============================
+     GOOGLE FONTS (loaded early for performance)
+============================ -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+
+
+  <!-- PRIMARY META -->
+  <title>Mepangilinan Real Estate Brokerage Corporation | MEPREB | MREB</title>
+  <meta name="description" content="Mepangilinan Real Estate Brokerage Corporation (MEPREB | MREB) offers trusted real estate solutions, property brokerage, and investment services in the Philippines.">
+  <meta name="keywords" content="Mepangilinan Real Estate, MEPREB, MREB, real estate, property brokerage, Philippines">
+
+  <!-- OPEN GRAPH / SOCIAL META -->
+  <meta property="og:title" content="Mepangilinan Real Estate Brokerage Corp">
+  <meta property="og:description" content="Professional real estate brokerage services in the Philippines. Trusted solutions for buying, selling, and leasing properties.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mepreb.com/">
+  <meta property="og:image" content="https://mepreb.com/images/logo.png">
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+
+  <!-- STYLESHEETS -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 </head>
+
 <body>
 
+<!-- ============================
+     NAVIGATION HEADER
+=============================== -->
 <header class="navbar">
   <div class="logo">
     <a href="index.html">
@@ -21,24 +47,25 @@
     </a>
   </div>
 
-  <!-- HAMBURGER ICON -->
+  <!-- Mobile Menu Toggle -->
   <div class="menu-toggle" id="menu-toggle">
     <span></span>
     <span></span>
     <span></span>
   </div>
 
-  <!-- NAVIGATION MENU -->
+  <!-- Navigation Links -->
   <nav id="nav-menu">
     <ul>
-      <li><a href="index.html" class="active" >HOME</a></li>
-      <li><a href="about.html" >ABOUT</a></li>
+      <li><a href="index.html" class="active">HOME</a></li>
+      <li><a href="about.html">ABOUT</a></li>
       <li><a href="portfolio.html">PORTFOLIO</a></li>
       <li><a href="properties.html">PROPERTIES</a></li>
       <li><a href="contact.html">CONTACT</a></li>
     </ul>
   </nav>
 
+  <!-- Header Buttons -->
   <div class="header-buttons">
     <a href="book-a-consultation.html" class="btn-consult">BOOK A CONSULTATION</a>
     <a href="login.php" class="btn-admin" title="Admin Login">
@@ -48,23 +75,35 @@
 </header>
 
 
+<!-- ============================
+     HERO SECTION WITH VIDEO BG
+=============================== -->
+<section class="hero">
 
-<!-- HERO SECTION -->
-<section class="hero"  style="background-image: url('images/home-bg.png');">
+  <!-- Background Video -->
+  <video autoplay muted loop class="hero-video">
+    <source src="images/index-bg.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Dark Overlay for Better Text Contrast -->
   <div class="overlay"></div>
+
+  <!-- Hero Text Content -->
   <div class="hero-content">
     <h1>
       WHAT WE DO TO MAKE <span class="real-estate">REAL ESTATE</span> SIMPLE FOR YOU
     </h1>
-    <p class="hero-subtitle">End-to-end leasing, renovation, and more.</p>
+
+    <p class="hero-subtitle">End-to-end solutions, built to suit, and more.</p>
 
     <p>
-      At MEPANGILINAN REAL ESTATE BROKERAGE CORP (MREB), we offer end-to-end services designed to
+      At MEPANGILINAN REAL ESTATE BROKERAGE CORP <span class="highlight-mreb">(MREB)</span>, we offer end-to-end services designed to
       take the stress out of real estate. Whether you’re looking for the right space, need help preparing it, or
       want expert support navigating the market, we’re here to walk with you every step of the way.
     </p>
 
-    <!-- HERO BUTTONS -->
+    <!-- Hero CTA Buttons -->
     <div class="hero-buttons">
       <a href="book-a-consultation.html" class="btn-primary">Book a Consultation</a>
       <a href="portfolio.html" class="btn-primary">View our Portfolio</a>
@@ -74,270 +113,243 @@
 
 
 
-
-
-
-
-
-<!-- WHAT WE DO SECTION -->
+<!-- ============================
+     WHAT WE DO SECTION
+=============================== -->
 <section class="what-we-do">
   <div class="container">
     <h2>WHAT WE DO?</h2>
     <p class="subtitle">End-to-end solutions for modern workspaces.</p>
 
     <div class="cards">
-      <!-- CARD 1 -->
-      <div class="card">
+
+      <!-- Service Card 1 -->
+      <div class="card scroll-card from-left">
         <div class="card-img">
           <img src="images/leasing-icon.png" alt="Explore Leasing" />
         </div>
         <div class="card-content">
-         <a href="properties.html" class="card-btn">EXPLORE LEASING</a>
+          <a href="properties.html" class="card-btn">EXPLORE LEASING</a>
           <h3>Find the right space for your business.</h3>
-          <p class = "card-text">
-            We connect businesses with the right commercial spaces, strategically located and cost-effective for growth. 
+          <p class="card-text">
+          We connect businesses with the right commercial spaces, strategically located and cost-effective for growth.
           </p>
         </div>
       </div>
 
-      <!-- CARD 2 -->
-      <div class="card">
+      <!-- Service Card 2 -->
+      <div class="card scroll-card from-left">
         <div class="card-img">
           <img src="images/work-icon.png" alt="See Our Work" />
         </div>
         <div class="card-content">
-           <a href="portfolio.html" class="card-btn">SEE OUR WORK</a>
+          <a href="portfolio.html" class="card-btn">SEE OUR WORK</a>
           <h3>Move in fast, start right away.</h3>
-          <p class = "card-text">
-            From planning to final handover, we manage your renovation and fit-out with precision,
-            ensuring every detail reflects your brand.
+          <p class="card-text">
+           From planning to final handover, we manage your renovation and fit-out with precision, ensuring every detail reflects your brand.
           </p>
         </div>
       </div>
 
-      <!-- CARD 3 -->
-      <div class="card">
+      <!-- Service Card 3 -->
+      <div class="card scroll-card from-right">
         <div class="card-img">
           <img src="images/units-icon.png" alt="View Ready Units" />
         </div>
         <div class="card-content">
-           <a href="properties.html" class="card-btn">VIEW READY UNITS</a>
+          <a href="properties.html" class="card-btn">VIEW READY UNITS</a>
           <h3>Design and build made simple.</h3>
-          <p class = "card-text">
-            Ready-to-use workspaces with furniture, infrastructure, and utilities, helping you
-            launch operations instantly, hassle-free.
+          <p class="card-text">
+           Ready-to-use workspaces with furniture, infrastructure, and utilities, helping you launch operations instantly, hassle-free.
           </p>
         </div>
       </div>
 
-      <!-- CARD 4 -->
-      <div class="card">
+      <!-- Service Card 4 -->
+      <div class="card scroll-card from-right">
         <div class="card-img">
           <img src="images/secure-icon.png" alt="Learn More" />
         </div>
         <div class="card-content">
           <a href="about.html" class="card-btn">LEARN MORE</a>
           <h3>We protect people and property.</h3>
-          <p class = "card-text">
-           From fire safety systems to advanced access control solutions, 
-           we integrate security and compliance.
+          <p class="card-text">
+          From fire safety systems to advanced access control solutions, we integrate security and compliance.
           </p>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
 
 
-
-
-
-
-
-
+<!-- ============================
+     FEATURED PROJECTS
+=============================== -->
 <section class="featured-projects">
   <h2>OUR FEATURED PROJECTS</h2>
   <p class="subtitle">A glimpse of the spaces we’ve transformed for our clients.</p>
 
   <div class="project-list">
+
+    <!-- Project 1 -->
     <div class="project-item">
       <div class="project-card">
-        <img src="images/office.png" alt="Office & Building Leasing" />
+        <video src="images/project1.mp4" autoplay loop muted playsinline></video>
       </div>
       <div class="project-content">
-        <h3 class="project-title"> Office & Building Leasing</h3>
+        <h3 class="project-title">Office & Building Leasing</h3>
         <h4 class="project-subtitle">Premium Workspace Solutions</h4>
         <p>Secured a strategic office space for a growing company.</p>
         <a href="portfolio.html" class="btn-gold">EXPLORE</a>
       </div>
     </div>
 
+    <!-- Project 2 -->
     <div class="project-item">
       <div class="project-card">
-        <img src="images/renovation.png" alt="Complete Renovation & Fit-Out" />
+        <video src="images/project2.mp4" autoplay loop muted playsinline></video>
       </div>
       <div class="project-content">
         <h3 class="project-title">Complete Renovation & Fit-Out</h3>
         <h4 class="project-subtitle">Professional Office Interiors</h4>
-        <p>Redesigned office spaces with efficient layouts and modern interiors.</p>
+        <p>Redesigned office spaces with optimized layouts and modern finishes.</p>
         <a href="portfolio.html" class="btn-gold">EXPLORE</a>
       </div>
     </div>
 
+    <!-- Project 3 -->
     <div class="project-item">
       <div class="project-card">
-        <img src="images/plug-and-play.png" alt="Retail Space Development" />
+        <video src="images/project3.mp4" autoplay loop muted playsinline></video>
       </div>
       <div class="project-content">
         <h3 class="project-title">Plug-and-Play Delivery</h3>
         <h4 class="project-subtitle">Ready-to-Use Office Solutions</h4>
-        <p>Fully equipped office spaces with desks, connectivity, and essentials.</p>
+        <p>Fully equipped offices with essentials and connectivity.</p>
         <a href="portfolio.html" class="btn-gold">EXPLORE</a>
       </div>
     </div>
 
-
+    <!-- Project 4 -->
     <div class="project-item">
       <div class="project-card">
-        <img src="images/safety-and-security.png" alt="Complete Renovation & Fit-Out" />
+        <video src="images/project4.mp4" autoplay loop muted playsinline></video>
       </div>
       <div class="project-content">
         <h3 class="project-title">Safety & Security</h3>
         <h4 class="project-subtitle">Enhanced Facility Systems</h4>
-        <p>Installed modern fire and access systems for a client’s facility.</p>
+        <p>Installation of fire systems, CCTV, and access control solutions.</p>
         <a href="portfolio.html" class="btn-gold">EXPLORE</a>
       </div>
     </div>
 
-
   </div>
 </section>
 
 
 
-
-
-
-
-
-
-
+<!-- ============================
+     CALL-TO-ACTION SECTION
+=============================== -->
 <section class="cta-section">
-  <h2>Ready to Start Your Project?</h2>
-  <div class="cta-buttons">
-    <a href="book-a-consultation.html" class="btn-primary">BOOK AN APPOINTMENT</a>
-    <a href="contact.html" class="btn-primary">GET IN TOUCH!</a>
-  </div>
+    <h2>Ready to Start Your Project?</h2>
+    <div class="cta-buttons">
+      <a href="book-a-consultation.html" class="btn-primary">BOOK AN APPOINTMENT</a>
+      <a href="contact.html" class="btn-primary">GET IN TOUCH!</a>
+    </div>
 </section>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- MAIN FOOTER SECTION -->
+<!-- ============================
+     FOOTER SECTION
+=============================== -->
 <section class="footer-section">
-  <div class="footer-container">
+ 
 
-    <!-- LEFT COLUMN: LOGO -->
-    <div class="footer-column logo-column">
-      <img src="images/logo.png" alt="Logo" class="footer-logo">
-    </div>
+    <div class="footer-container">
 
-    <!-- RIGHT COLUMN: QUICK LINKS + FOLLOW US -->
-    <div class="footer-column links-column">
-      
-      <!-- QUICK LINKS -->
-      <div class="footer-block">
-        <h3>QUICK LINKS!</h3>
-        <ul class="quick-links">
-          <li><a href="index.html">HOME</a></li>
-          <li><a href="about.html">ABOUT</a></li>
-          <li><a href="portfolio.html">PORTFOLIO</a></li>
-          <li><a href="properties.html">PROPERTIES</a></li>
-          <li><a href="contact.html">CONTACT</a></li>
-        </ul>
+      <!-- Footer Logo -->
+      <div class="footer-column logo-column">
+        <img src="images/logo.png" alt="Logo" class="footer-logo">
       </div>
 
-      <!-- FOLLOW US -->
-      <div class="footer-block social-block">
-        <h3>FOLLOW US!</h3>
+      <!-- Quick Links & Socials -->
+      <div class="footer-column links-column">
 
+        <!-- Quick Links -->
+        <div class="footer-block">
+          <h3>QUICK LINKS!</h3>
+          <ul class="quick-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="portfolio.html">PORTFOLIO</a></li>
+            <li><a href="properties.html">PROPERTIES</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+          </ul>
+        </div>
 
-  <!-- SOCIAL ICONS HTML -->
-<div class="social-icons">
-  <!-- Facebook -->
-  <div class="social-item facebook">
-    <img src="images/facebook.png" alt="Facebook Icon">
-    <div class="social-hover">Facebook</div>
-  </div>
+        <!-- Social Media Icons -->
+        <div class="footer-block social-block">
+          <h3>FOLLOW US!</h3>
 
-  <!-- Instagram -->
-  <div class="social-item instagram">
-    <img src="images/ig.png" alt="Instagram Icon">
-    <div class="social-hover">Instagram</div>
-  </div>
+          <div class="social-icons">
+            <div class="social-item facebook">
+              <img src="images/facebook.png" alt="Facebook Icon">
+              <div class="social-hover">Facebook</div>
+            </div>
 
-  <!-- Twitter -->
-  <div class="social-item twitter">
-    <img src="images/twitter.png" alt="Twitter Icon">
-    <div class="social-hover">Twitter</div>
-  </div>
+            <div class="social-item instagram">
+              <img src="images/ig.png" alt="Instagram Icon">
+              <div class="social-hover">Instagram</div>
+            </div>
 
-  <!-- YouTube -->
-  <div class="social-item youtube">
-    <img src="images/youtube.png" alt="YouTube Icon">
-    <div class="social-hover">YouTube</div>
-  </div>
+            <div class="social-item twitter">
+              <img src="images/twitter.png" alt="Twitter Icon">
+              <div class="social-hover">Twitter</div>
+            </div>
 
-  <!-- Optional TikTok -->
-  <div class="social-item tiktok">
-    <img src="images/tiktok.png" alt="TikTok Icon">
-    <div class="social-hover">TikTok</div>
-  </div>
+            <div class="social-item youtube">
+              <img src="images/youtube.png" alt="YouTube Icon">
+              <div class="social-hover">YouTube</div>
+            </div>
 
-  <!-- Optional Messenger -->
-  <div class="social-item messenger">
-    <img src="images/messenger.png" alt="Messenger Icon">
-    <div class="social-hover">Messenger</div>
-  </div>
-</div>
+            <div class="social-item tiktok">
+              <img src="images/tiktok.png" alt="TikTok Icon">
+              <div class="social-hover">TikTok</div>
+            </div>
 
-      </div>
+            <div class="social-item messenger">
+              <img src="images/messenger.png" alt="Messenger Icon">
+              <div class="social-hover">Messenger</div>
+            </div>
+          </div>
+
+        </div>
+
 
     </div>
-
   </div>
 </section>
 
-<!-- BOTTOM FOOTER -->
+
+
+<!-- ============================
+     BOTTOM FOOTER
+=============================== -->
 <footer class="footer-bottom">
-  Mepangilinan Real Estate Brokerage Corporation
+  © 2025 Mepangilinan Real Estate Brokerage Corporation. All rights reserved.
 </footer>
 
 
 
-  <!-- LINK TO JS -->
-  <script src="script.js"></script>
+<!-- ============================
+     JAVASCRIPT
+=============================== -->
+<script src="script.js"></script>
+
 </body>
 </html>
-
